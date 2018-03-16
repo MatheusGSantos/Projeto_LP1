@@ -1,0 +1,24 @@
+Imóvel:
+	ID
+	rua
+	número
+	bairro
+	CEP
+	cidade
+	valor
+	disponivel p venda ou aluguel
+	tipo(casa,apartamento,terreno):
+		casa:
+			nº de pavimentos
+			nº de quartos
+			posição
+			área do terreno
+			área construída
+		apartamento:
+			área
+			nº de quartos
+			posição
+			valor do condominio
+			nº de vagas de garagem
+		terreno:
+			área
