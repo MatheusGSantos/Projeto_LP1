@@ -6,7 +6,13 @@ void read_data_struct(tCadastro *aCadastro, FILE *file){
 	else{
 		aCadastro++;
 		while(fread(aCadastro,sizeof(tCadastro),1,file)){
-			aCadastro++;;
+			aCadastro++;
 		}
 	}	
+}
+
+void save_data_struct(tCadastro *aCadastro, FILE *file){
+	while( fwrite(aCadastro,1,sizeof(tCadastro),file) ){
+		aCadastro++;
+	}
 }
