@@ -17,7 +17,7 @@ void displayMenu()
         system("cls");
         printf("\t\t\t\tCadastrar\n\n");
         while(1){
-            //rodar função de cadastro
+            //rodar funÃ§Ã£o de cadastro
             printf("Deseja cadastrar outro?  1-Sim   2-Nao\nR: ");
             scanf("%d", &op);
 
