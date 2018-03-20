@@ -6,6 +6,8 @@
 
 int main()
 {
+	tCadastro aCadastro[100] = {0};
+	
 	
 	return 0;
 }
