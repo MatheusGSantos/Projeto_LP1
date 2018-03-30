@@ -2,7 +2,6 @@ typedef struct
 {
   int N_pav;
   int N_quartos;
-  char posicao [16];
   double area_terreno;
   double area_construida;
 }tCasa;
