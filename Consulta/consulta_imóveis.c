@@ -1,3 +1,5 @@
+setlocale(LC_ALL,"Portuguese")
+
 void show_all(tCadastro *aCadastro){
 	//Imprime todos os itens do array
 	int count = 0,i=0;
