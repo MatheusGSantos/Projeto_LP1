@@ -1,43 +1,43 @@
-Imóvel:
+ImÃ³vel:
 	ID
 	rua
-	número
+	nÃºmero
 	bairro
 	CEP
 	cidade
 	valor
 	disponivel p venda ou aluguel
-	tipo(casa,apartamento,terreno):
+	tipo(casa,apartamento,terreno, flat, studio):
 		casa:
-			nº de pavimentos
-			nº de quartos
-			posição
-			área do terreno
-			área construída
+			nÂº de pavimentos
+			nÂº de quartos
+			posiÃ§Ã£o
+			Ã¡rea do terreno
+			Ã¡rea construÃ­da
 		apartamento:
-			área
-			nº de quartos
-			posição
+			Ã¡rea
+			nÂº de quartos
+			posiÃ§Ã£o
 			andar
 			valor do condominio
-			nº de vagas de garagem
+			nÂº de vagas de garagem
 		terreno:
-			área
+			Ã¡rea
 		Flat:
-			área do apt
+			Ã¡rea do apt
 			valor condominio
 			se tem ar condicionado
 			se tem internet e TV a cabo
 			se tem lavanderia
-			se tem limpeza/arrumação e serviço 24h
+			se tem limpeza/arrumaÃ§Ã£o e serviÃ§o 24h
 		Studio:
-			área do studio
+			Ã¡rea do studio
 			valor condominio
 			se tem ar condicionado
 			se tem internet e TV a cabo
-			se tem serviço de lavanderia
-			se tem arrumação/limpeza
-			se tem recepção 24h
+			se tem serviÃ§o de lavanderia
+			se tem arrumaÃ§Ã£o/limpeza
+			se tem recepÃ§Ã£o 24h
 			se tem pscina
 			se tem sauna
-			se tem sala de ginástica
+			se tem sala de ginÃ¡stica
