@@ -18,7 +18,26 @@ Imóvel:
 			área
 			nº de quartos
 			posição
+			andar
 			valor do condominio
 			nº de vagas de garagem
 		terreno:
 			área
+		Flat:
+			área do apt
+			valor condominio
+			se tem ar condicionado
+			se tem internet e TV a cabo
+			se tem lavanderia
+			se tem limpeza/arrumação e serviço 24h
+		Studio:
+			área do studio
+			valor condominio
+			se tem ar condicionado
+			se tem internet e TV a cabo
+			se tem serviço de lavanderia
+			se tem arrumação/limpeza
+			se tem recepção 24h
+			se tem pscina
+			se tem sauna
+			se tem sala de ginástica
