@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+#include <locale.h>
+#include <stdlib.h>
+
+void show_descricao(tCadastro *aCadastro)
+{
+	int count = 0,i=0;
+	while(i<=100){
+		if(aCadastro->ID != 0){
+			printf("%d\t\t%s\n",aCadastro->ID, aCadastro->tipo);
+            printf("Cidade: %d\nBairro: %s\n",aCadastro->cidade, aCadastro->bairro);
+            printf("Rua: %s\nCEP: %s\n",aCadastro->rua, aCadastro->CEP);
+            printf("Número: %d\n",aCadastro->numero);
+            printf("Disponibilidade: %s\nValor: R$%.2lf",aCadastro->disp, aCadastro->valor);
+
+            if(aCadastro.tipo == "CASA"){
+                printf("Número de pavimentos: %d", aCadastro->tCasa.N_pav);
+                printf("Número de quartos: %d", aCadastro->tCasa.N_quartos);
+                printf("Área do terreno: %.2lf", aCadastro->tCasa.area_terreno);
+                printf("Área construida: %.2lf", aCadastro->tCasa.area_construida);
+            }
+            else if(aCadastro.tipo == "APARTAMENTO"){
+                printf("Número de andares: %d", aCadastro->tApartamento.N_andar);
+                printf("Número de quartos: %d", aCadastro->tApartamento.N_quartos);
+                printf("Área: %.2lf", aCadastro->tApartamento.area);
+                printf("Posição: %s", aCadastro->tApartamento.posicao);
+                printf("Número de vagas na garagem: %d", aCadastro->tApartamento.vagas_garag);
+                printf("Valor do condomínio: %.2lf", aCadastro->tApartamento.valor_cond);
+            }
+            else if(aCadastro.tipo == "TERRENO"){
+                printf("Área do terreno: %.2lf", aCadastro->tTerreno.area);
+            }
+            else if(aCadastro.tipo == "FLAT"){
+                printf("Área: %.2lf", aCadastro->tFlat.area);
+                printf("Possui Ar condicionado: %s", aCadastro->tFlat.arCond);
+                printf("Possui Internet e Tv a cabo: %s", aCadastro->tFlat.int_tv);
+                printf("Atendimento 24h: %s", aCadastro->tFlat.atend24);
+                printf("Possui lavanderia: %s", aCadastro->tFlat.lavanderia);
+                printf("Valor do condomínio: %.2lf", aCadastro->tFlat.condominio);
+                printf("Possui serviço de limpeza: %.2lf", aCadastro->tFlat.limpeza);
+            }
+            else if(aCadastro.tipo == "STUDIO"){
+                printf("Área: %.2lf", aCadastro->tStudio.area);
+                printf("Possui Ar condicionado: %s", aCadastro->tStudio.arCond);
+                printf("Possui Internet e Tv a cabo: %s", aCadastro->tStudio.int_tv);
+                printf("Atendimento 24h: %s", aCadastro->tStudio.atend24);
+                printf("Possui lavanderia: %s", aCadastro->tStudio.lavanderia);
+                printf("Valor do condomínio: %.2lf", aCadastro->tStudio.condominio);
+                printf("Possui piscina: %s", aCadastro->tStudio.piscina);
+                printf("Possui sauna: %s", aCadastro->tStudio.sauna);
+                printf("Possui sala de ginástica: %s", aCadastro->tStudio.ginastica);
+            }
+			count++;
+		}
+		aCadastro++;
+		i++;
+	}
+	if(!count)
+		puts("0 itens encontrados.");
+}
