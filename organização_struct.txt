@@ -37,6 +37,6 @@ Imóvel:
 			se tem serviço de lavanderia
 			se tem arrumação/limpeza
 			se tem recepção 24h
-			se tem pscina
+			se tem piscina
 			se tem sauna
 			se tem sala de ginástica
