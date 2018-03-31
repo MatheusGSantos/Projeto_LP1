@@ -45,7 +45,7 @@ typedef struct
   char lavanderia[4];
   char limpeza[4];
   char atend24[4];
-  char pscina[4];
+  char piscina[4];
   char sauna[4];
   char ginastica[4];
 }tStudio;
