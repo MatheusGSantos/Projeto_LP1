@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-setlocale(LC_ALL,"Portuguese")
+setlocale(LC_ALL,"Portuguese");
 
 typedef struct
 {
