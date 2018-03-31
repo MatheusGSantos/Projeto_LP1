@@ -164,7 +164,7 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
     scanf("%lf", &aCadastro->flat->condominio);
     getchar();
 
-    printf("Dispõe de ar condicionado?: ");
+    printf("Dispõe de ar-condicionado?: ");
     fgets(aCadastro->flat->arCond,4,stdin);
     aCadastro->flat->arCond[strlen(aCadastro->flat->arCond) - 1] = '\0';
     strlwr(aCadastro->flat->arCond);
@@ -190,7 +190,52 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
     strlwr(aCadastro->flat->atend24);
 
   }else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
+    printf("Informe a área do terreno: ");
+    scanf("%lf", &aCadastro->Studio->area);
+
+    printf("Informe o valor do condomínio: ");
+    scanf("%lf", &aCadastro->Studio->condominio);
+    getchar();
+
+    printf("Dispõe de ar-condicionado?: ");
+    fgets(aCadastro->Studio->arCond,4,stdin);
+    aCadastro->Studio->arCond[strlen(aCadastro->Studio->arCond) - 1] = '\0';
+    strlwr(aCadastro->Studio->arCond);
+
+    printf("Dispõe de internet e TV a cabo?: ");
+    fgets(aCadastro->Studio->int_tv,4,stdin);
+    aCadastro->Studio->int_tv[strlen(aCadastro->Studio->int_tv) - 1] = '\0';
+    strlwr(aCadastro->Studio->int_tv);
+
+    printf("Dispõe de lavanderia?: ");
+    fgets(aCadastro->Studio->lavanderia,4,stdin);
+    aCadastro->Studio->lavanderia[strlen(aCadastro->Studio->lavanderia) - 1] = '\0';
+    strlwr(aCadastro->Studio->lavanderia);
+
+    printf("Dispõe de arrumação/limpeza?: ");
+    fgets(aCadastro->Studio->limpeza,4,stdin);
+    aCadastro->Studio->limpeza[strlen(aCadastro->Studio->limpeza) - 1] = '\0';
+    strlwr(aCadastro->Studio->limpeza);
+
+    printf("Dispõe de recepção 24h?: ");
+    fgets(aCadastro->Studio->atend24,4,stdin);
+    aCadastro->Studio->atend24[strlen(aCadastro->Studio->atend24) - 1] = '\0';
+    strlwr(aCadastro->Studio->atend24);
     
+    printf("Dispões de piscina? ");
+    fgets(aCadastro->Studio->piscina,4,stdin);
+    aCadastro->Studio->piscina[strlen(aCadastro->Studio->piscina) - 1] = '\0';
+    strlwr(aCadastro->Studio->piscina);
+    
+    printf("Dispões de sauna? ");
+    fgets(aCadastro->Studio->sauna,4,stdin);
+    aCadastro->Studio->sauna[strlen(aCadastro->Studio->sauna) - 1] = '\0';
+    strlwr(aCadastro->Studio->sauna);
+    
+    printf("Dispões de ginástica? ");
+    fgets(aCadastro->Studio->ginastica,4,stdin);
+    aCadastro->Studio->ginastica[strlen(aCadastro->Studio->ginastica) - 1] = '\0';
+    strlwr(aCadastro->Studio->ginastica);
 
   }else{
     printf("Tipo invalido\n");
