@@ -75,9 +75,23 @@ typedef struct
 }tCadastro;
 
 
+int change_index(tCadastro *array){
+  int counter = 0; 
+  while(1){
+    if(*array == 0){
+      return counter;
+    }else{
+      counter++;
+      array++;
+    }
+  }
+}
+
+
 int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for válido, 1 se for inválido
 {
-  //função de acréscimo no index
+  
+  aCadastro += change_index(aCadastro);
 
   printf("Informe o ID da transação: ");
   scanf("%d", &aCadastro->ID);
