@@ -1,7 +1,62 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct Cadastro
+setlocale(LC_ALL,"Portuguese")
+
+typedef struct
+{
+  int N_pav;
+  int N_quartos;
+  double area_terreno;
+  double area_construida;
+}tCasa;
+
+
+typedef struct
+{
+  double area;
+  int N_quartos;
+  char posicao[16];
+  int N_andar;
+  double valor_cond;
+  int vagas_garag;
+}tApartamento;
+
+
+typedef struct
+{
+  double area;
+}tTerreno;
+
+
+typedef struct
+{
+  double area;
+  double condominio;
+  char arCond[4];
+  char int_tv[4];
+  char lavanderia[4];
+  char limpeza[4];
+  char atend24[4];
+}tFlat;
+
+
+typedef struct
+{
+  double area;
+  double condominio;
+  char arCond[4];
+  char int_tv[4];
+  char lavanderia[4];
+  char limpeza[4];
+  char atend24[4];
+  char pscina[4];
+  char sauna[4];
+  char ginastica[4];
+}tStudio;
+
+
+typedef struct
 {
   int ID;
   char rua[50];
@@ -11,94 +66,136 @@ typedef struct Cadastro
   char cidade[20];
   double valor;
   char disp[10];
-  char tipo[13];
-  double area;
-  double areaC;
-  int quartos;
-  int pavimentos;
-  double aluguel;
-  char posicao[50];
-  int garagem;
-
+  char tipo[12];
+  tCasa casa;
+  tApartamento apartamento;
+  tTerreno terreno;
+  tFlat flat;
+  tStudio studio;
 }tCadastro;
 
-int main()
-{
-  tCadastro aCadastro[100];
 
-  printf("Digite um numero de ID para seu imovel: ");
+int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for válido, 1 se for inválido
+{
+  //função de acréscimo no index
+
+  printf("Informe o ID da transação: ");
   scanf("%d", &aCadastro->ID);
   getchar();
 
-  printf("Digite o nome da cidade: ");
+  printf("Informe o nome da cidade: ");
   fgets(aCadastro->cidade,20,stdin);
   aCadastro->cidade[strlen(aCadastro->cidade) - 1] = '\0';
 
-  printf("Digite o nome do bairro: ");
+  printf("Informe o nome do bairro: ");
   fgets(aCadastro->bairro,30,stdin);
   aCadastro->bairro[strlen(aCadastro->bairro) - 1] = '\0';
 
-  printf("Digite o nome da rua: ");
+  printf("Informe o nome da rua: ");
   fgets(aCadastro->rua,50,stdin);
   aCadastro->rua[strlen(aCadastro->rua) - 1] = '\0';
 
-  printf("Digite o CEP: ");
+  printf("Informe o CEP: ");
   fgets(aCadastro->CEP,11,stdin);
   aCadastro->CEP[strlen(aCadastro->CEP) - 1] = '\0';
 
-  printf("Digite o numero do imovel: ");
+  printf("Informe o número do imóvel: ");
   scanf("%d", &aCadastro->numero);
   getchar();
 
-  printf("Digite o tipo do imovel: ");
+  printf("Informe o tipo do imóvel: ");
   fgets(aCadastro->tipo,13,stdin);
   aCadastro->tipo[strlen(aCadastro->tipo) - 1] = '\0';
   strupr(aCadastro->tipo);
 
-  printf("Digite se ele esta disponivel para aluguel ou venda: ");
+  printf("Informe se ele está disponível para aluguel ou venda: ");
   fgets(aCadastro->disp,10,stdin);
   aCadastro->disp[strlen(aCadastro->disp) - 1] = '\0';
 
-  printf("Digite o valor do imovel: ");
+  printf("Informe o valor do imóvel: ");
   scanf("%lf", &aCadastro->valor);
 
 
   if(strcmp(aCadastro->tipo,"CASA") == 0){
-    printf("Digite o numero de pavimentos: ");
-    scanf("%d", &aCadastro->pavimentos);
+    printf("Informe o número de pavimentos: ");
+    scanf("%d", &aCadastro->casa->N_pav);
 
-    printf("Digite o numero de quartos: ");
-    scanf("%d", &aCadastro->quartos);
+    printf("Informe o número de quartos: ");
+    scanf("%d", &aCadastro->casa->N_quartos);
 
-    printf("Digite a area do terreno: ");
-    scanf("%lf", &aCadastro->area);
+    printf("Informe a área do terreno: ");
+    scanf("%lf", &aCadastro->casa->area_terreno);
 
-    printf("Digite a area da casa: ");
-    scanf("%lf", &aCadastro->areaC);
+    printf("Informe a área construída: ");
+    scanf("%lf", &aCadastro->casa->area_construida);
   }
+
+
   else if(strcmp(aCadastro->tipo,"APARTAMENTO") == 0){
-    printf("Digite a area do apartamento: ");
-    scanf("%lf", &aCadastro->area);
+    printf("Informe a área do apartamento: ");
+    scanf("%lf", &aCadastro->apartamento->area);
 
-    printf("Digite o numero de quartos: ");
-    scanf("%d", &aCadastro->quartos);
+    printf("Informe o número de quartos: ");
+    scanf("%d", &aCadastro->apartamento->N_quartos);
 
-    printf("Digite a posicao: ");
-    fgets(aCadastro->posicao,50,stdin);
-    aCadastro->posicao[strlen(aCadastro->posicao) - 1] = '\0';
+    printf("Informe a posição: ");
+    fgets(aCadastro->apartamento->posicao,50,stdin);
+    aCadastro->apartamento->posicao[strlen(aCadastro->apartamento->posicao) - 1] = '\0';
 
-    printf("Digite o valor do condominio: ");
-    scanf("%lf", &aCadastro->valor);
+    printf("Informe o andar no prédio: ");
+    scanf("%d", &aCadastro->apartamento->N_andar);
 
-    printf("Digite o numero de vagas na garagem: ");
-    scanf("%d", &aCadastro->garagem);
+    printf("Informe o valor do condomínio: ");
+    scanf("%lf", &aCadastro->apartamento->valor_cond);
+
+    printf("Informe o número de vagas na garagem: ");
+    scanf("%d", &aCadastro->apartamento->vagas_garag);
+
 
   }else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
-    printf("Digite a area do terreno: ");
-    scanf("%lf", &aCadastro->area);
+    printf("Informe a área do terreno: ");
+    scanf("%lf", &aCadastro->terreno->area);
 
-  }else
+  }else if(strcmp(aCadastro->tipo,"FLAT") == 0){
+    printf("Informe a área do terreno: ");
+    scanf("%lf", &aCadastro->flat->area);
+
+    printf("Informe o valor do condomínio: ");
+    scanf("%lf", &aCadastro->flat->condominio);
+    getchar();
+
+    printf("Dispõe de ar condicionado?: ");
+    fgets(aCadastro->flat->arCond,4,stdin);
+    aCadastro->flat->arCond[strlen(aCadastro->flat->arCond) - 1] = '\0';
+    strlwr(aCadastro->flat->arCond);
+
+    printf("Dispõe de internet e TV a cabo?: ");
+    fgets(aCadastro->flat->int_tv,4,stdin);
+    aCadastro->flat->int_tv[strlen(aCadastro->flat->int_tv) - 1] = '\0';
+    strlwr(aCadastro->flat->int_tv);
+
+    printf("Dispõe de lavanderia?: ");
+    fgets(aCadastro->flat->lavanderia,4,stdin);
+    aCadastro->flat->lavanderia[strlen(aCadastro->flat->lavanderia) - 1] = '\0';
+    strlwr(aCadastro->flat->lavanderia);
+
+    printf("Dispõe de arrumação/limpeza?: ");
+    fgets(aCadastro->flat->limpeza,4,stdin);
+    aCadastro->flat->limpeza[strlen(aCadastro->flat->limpeza) - 1] = '\0';
+    strlwr(aCadastro->flat->limpeza);
+
+    printf("Dispõe de recepção 24h?: ");
+    fgets(aCadastro->flat->atend24,4,stdin);
+    aCadastro->flat->atend24[strlen(aCadastro->flat->atend24) - 1] = '\0';
+    strlwr(aCadastro->flat->atend24);
+
+  }else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
+    
+
+  }else{
     printf("Tipo invalido\n");
+    return 1;
+  }
 
   return 0;
 }
