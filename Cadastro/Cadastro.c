@@ -99,14 +99,17 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
   printf("Informe o nome da cidade: ");
   fgets(aCadastro->cidade,20,stdin);
   aCadastro->cidade[strlen(aCadastro->cidade) - 1] = '\0';
+  strupr(aCadastro->cidade);
 
   printf("Informe o nome do bairro: ");
   fgets(aCadastro->bairro,30,stdin);
   aCadastro->bairro[strlen(aCadastro->bairro) - 1] = '\0';
+  strupr(aCadastro->bairro);
 
   printf("Informe o nome da rua: ");
   fgets(aCadastro->rua,50,stdin);
   aCadastro->rua[strlen(aCadastro->rua) - 1] = '\0';
+  strupr(aCadastro->rua);
 
   printf("Informe o CEP: ");
   fgets(aCadastro->CEP,11,stdin);
@@ -364,6 +367,43 @@ void show_descricao(tCadastro *aCadastro)
        puts("0 itens encontrados.");
 }
 
+void AluguelBairro(tCadastro *aCadastro)
+{
+    int i, flag = 0;
+    char bairro[30];
+
+    fgets(bairro,30,stdin);
+    bairro[strlen(bairro) - 1] = '\0';
+    strupr(bairro);
+
+    for(i = 0; i < 100; i++){
+        if((strcmp(aCadastro->bairro,bairro) == 0) && (strcmp(aCadastro->disp,"ALUGUEL") == 0 )){
+            printf("%d ", aCadastro->ID);
+            flag = 1;
+        }aCadastro++;
+    }if(!flag)
+    printf("Não foi encontrado nenhum imóvel disponível para aluguel nesse bairro\n");
+}
+
+void VendaBairro(tCadastro *aCadastro)
+{
+    int i, flag = 0;
+    char bairro[30];
+
+    fgets(bairro,30,stdin);
+    bairro[strlen(bairro) - 1] = '\0';
+    strupr(bairro);
+
+    for(i = 0; i < 100; i++){
+        if((strcmp(aCadastro->bairro,bairro) == 0) && (strcmp(aCadastro->disp,"VENDA") == 0 )){
+            printf("%d ", aCadastro->ID);
+            flag = 1;
+        }aCadastro++;
+    }if(!flag)
+    printf("Não foi encontrado nenhum imóvel disponível para venda nesse bairro\n");
+}
+
+
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
@@ -384,6 +424,12 @@ int main()
     printf("\n");
 
     consultaAlugaTipo(aCadastro);
+    printf("\n");
+
+    AluguelBairro(aCadastro);
+    printf("\n");
+
+    VendaBairro(aCadastro);
     printf("\n");
 
     return 0;
