@@ -143,6 +143,7 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
 
     printf("Informe a área construída: ");
     scanf("%lf", &aCadastro->casa.area_construida);
+    getchar();
   }
 
 
@@ -165,11 +166,13 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
 
     printf("Informe o número de vagas na garagem: ");
     scanf("%d", &aCadastro->apartamento.vagas_garag);
+    getchar();
 
 
   }else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
     printf("Informe a área do terreno: ");
     scanf("%lf", &aCadastro->terreno.area);
+    getchar();
 
   }else if(strcmp(aCadastro->tipo,"FLAT") == 0){
     printf("Informe a área do terreno: ");
@@ -260,22 +263,41 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
   return 0;
 }
 
-int *consultaTipo(tCadastro *aCadastro)
+void consultaVendaTipo(tCadastro *aCadastro) //Consulta se o imóvel está disponível para venda por tipo
 {
-    int i, ids[100] = {0};
+    int i, flag = 0;
     char tipo[15];
 
-    fgets(tipo,13,stdin);
+    fgets(tipo,15,stdin);
     tipo[strlen(tipo) - 1] = '\0';
     strupr(tipo);
 
-    for(i = 0; i <=100; i++){
-        if(strcmp(aCadastro->tipo,tipo) == 0 && strcmp(aCadastro->disp,"VENDA") == 0 ){
-            ids[i] = aCadastro->ID;
-        }
-    }
-    return *ids;
+    for(i = 0; i < 100; i++){
+        if((strcmp(aCadastro->tipo,tipo) == 0) && (strcmp(aCadastro->disp,"VENDA") == 0 )){
+            printf("%d ", aCadastro->ID);
+            flag = 1;
+        }aCadastro++;
+    }if(!flag)
+    printf("Não foi encontrado nenhum imóvel disponível\n");
 }
+void consultaAlugaTipo(tCadastro *aCadastro) //Consulta se o imóvel está disponível para aluguel por tipo
+{
+    int i, flag = 0;
+    char tipo[15];
+
+    fgets(tipo,15,stdin);
+    tipo[strlen(tipo) - 1] = '\0';
+    strupr(tipo);
+
+    for(i = 0; i < 100; i++){
+        if((strcmp(aCadastro->tipo,tipo) == 0) && (strcmp(aCadastro->disp,"ALUGUEL") == 0 )){
+            printf("%d ", aCadastro->ID);
+            flag = 1;
+        }aCadastro++;
+    }if(!flag)
+    printf("Não foi encontrado nenhum imóvel disponível\n");
+}
+
 void show_all(tCadastro *aCadastro){
 	//Imprime todos os itens do array
 	int count = 0;
@@ -346,6 +368,8 @@ int main()
 {
     setlocale(LC_ALL, "Portuguese");
 
+    int i;
+
     tCadastro aCadastro[100] = {0};
 
     Cadastro(aCadastro);
@@ -354,6 +378,12 @@ int main()
     show_all(aCadastro);
     printf("\n");
     show_descricao(aCadastro);
+    printf("\n");
+
+    consultaVendaTipo(aCadastro);
+    printf("\n");
+
+    consultaAlugaTipo(aCadastro);
     printf("\n");
 
     return 0;
