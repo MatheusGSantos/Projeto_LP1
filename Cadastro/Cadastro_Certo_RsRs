@@ -127,6 +127,7 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for vál
   printf("Informe se ele está disponível para aluguel ou venda: ");
   fgets(aCadastro->disp,10,stdin);
   aCadastro->disp[strlen(aCadastro->disp) - 1] = '\0';
+  strupr(aCadastro->disp);
 
   printf("Informe o valor do imóvel: ");
   scanf("%lf", &aCadastro->valor);
