@@ -4,7 +4,7 @@
 
 setlocale(LC_ALL,"Portuguese");
 
-void consultaVendaTipo(tCadastro *aCadastro) //Consulta se o im√≥vel est√° dispon√≠vel para venda por tipo
+void consultaVendaTipo()
 {
     int i, flag = 0;
     char tipo[15];
@@ -14,16 +14,21 @@ void consultaVendaTipo(tCadastro *aCadastro) //Consulta se o im√≥vel est√° dispo
     strupr(tipo);
 
     for(i = 0; i < 100; i++){
-        if((strcmp(aCadastro->tipo,tipo) == 0) && (strcmp(aCadastro->disp,"VENDA") == 0 )){
-            printf("%d ", aCadastro->ID);
+        if( (strcmp(aCadastro[i].tipo, tipo) == 0) && (strcmp(aCadastro[i].disp, "VENDA") == 0 )){
+            printf("%d", aCadastro[i].ID);
             flag = 1;
-        }aCadastro++;
-    }if(!flag)
-    printf("N√£o foi encontrado nenhum im√≥vel dispon√≠vel\n");
+            if(i != 99)
+            	printf(", ");
+			else	
+				printf("\n");
+        }
+    }
+	if(!flag)
+    	printf("N„o foi encontrado nenhum imÛvel deste tipo para venda.\n");
 }
-void consultaAlugaTipo(tCadastro *aCadastro) //Consulta se o im√≥vel est√° dispon√≠vel para aluguel por tipo
+void consultaAlugaTipo()
 {
-    int i, flag = 0;
+	int i, flag = 0;
     char tipo[15];
 
     fgets(tipo,15,stdin);
@@ -31,83 +36,92 @@ void consultaAlugaTipo(tCadastro *aCadastro) //Consulta se o im√≥vel est√° dispo
     strupr(tipo);
 
     for(i = 0; i < 100; i++){
-        if((strcmp(aCadastro->tipo,tipo) == 0) && (strcmp(aCadastro->disp,"ALUGUEL") == 0 )){
-            printf("%d ", aCadastro->ID);
+        if((strcmp(aCadastro[i].tipo,tipo) == 0) && (strcmp(aCadastro[i].disp,"ALUGUEL") == 0 )){
+            printf("%d ", aCadastro[i].ID);
             flag = 1;
-        }aCadastro++;
-    }if(!flag)
-    printf("N√£o foi encontrado nenhum im√≥vel dispon√≠vel\n");
+        }
+    }
+	if(!flag)
+    	printf("N„o foi encontrado nenhum imÛvel deste tipo para aluguel.\n");
 }
 
-void show_all(tCadastro *aCadastro){
-	//Imprime todos os itens do array
-	int count = 0;
-	while(aCadastro->ID != 0){
-        printf("%d-%s\n",aCadastro->ID, aCadastro->tipo);
-        count++;
-        aCadastro++;
+void show_all()
+{
+	
+	int count = 0, i = 0, f_counter = 0;
+	while(i<100){
+        if(aCadastro[i].ID != 0){
+			f_counter++;
+            if(f_counter == 1)
+            	puts("ID's':");
+			printf("%d - %s\n",aCadastro[i].ID, aCadastro[i].tipo);
+        	count++;
+    	}
+		i++;
 	}
 	if(!count)
 		puts("0 itens encontrados.");
 }
 
-void show_descricao(tCadastro *aCadastro)
+void show_descricao()
 {
-	int count = 0;
-	while(aCadastro->ID != 0){
-        printf("%d-%s\n",aCadastro->ID, aCadastro->tipo);
-        printf("Cidade: %s\nBairro: %s\n",aCadastro->cidade, aCadastro->bairro);
-        printf("Rua: %s\nCEP: %s\n",aCadastro->rua, aCadastro->CEP);
-        printf("N√∫mero: %d\n",aCadastro->numero);
-        printf("Disponibilidade: %s\nValor: R$%.2lf\n",aCadastro->disp, aCadastro->valor);
-
-        if(strcmp(aCadastro->tipo,"CASA") == 0){
-            printf("N√∫mero de pavimentos: %d\n", aCadastro->casa.N_pav);
-            printf("N√∫mero de quartos: %d\n", aCadastro->casa.N_quartos);
-            printf("√Årea do terreno: %.2lf\n", aCadastro->casa.area_terreno);
-            printf("√Årea construida: %.2lf\n", aCadastro->casa.area_construida);
-        }
-        else if(strcmp(aCadastro->tipo,"APARTAMENTO") == 0){
-            printf("N√∫mero de andares: %d\n", aCadastro->apartamento.N_andar);
-            printf("N√∫mero de quartos: %d\n", aCadastro->apartamento.N_quartos);
-            printf("√Årea: %.2lf\n", aCadastro->apartamento.area);
-            printf("Posi√ß√£o: %s\n", aCadastro->apartamento.posicao);
-            printf("N√∫mero de vagas na garagem: %d\n", aCadastro->apartamento.vagas_garag);
-            printf("Valor do condom√≠nio: %.2lf\n", aCadastro->apartamento.valor_cond);
-        }
-        else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
-            printf("√Årea do terreno: %.2lf\n", aCadastro->terreno.area);
-        }
-        else if(strcmp(aCadastro->tipo,"FLAT") == 0){
-            printf("√Årea: %.2lf\n", aCadastro->flat.area);
-            printf("Possui Ar condicionado: %s\n", aCadastro->flat.arCond);
-            printf("Possui Internet e Tv a cabo: %s\n", aCadastro->flat.int_tv);
-            printf("Atendimento 24h: %s\n", aCadastro->flat.atend24);
-            printf("Possui lavanderia: %s\n", aCadastro->flat.lavanderia);
-            printf("Valor do condom√≠nio: %.2lf\n", aCadastro->flat.condominio);
-            printf("Possui servi√ßo de limpeza: %s\n", aCadastro->flat.limpeza);
-        }
-        else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
-            printf("√Årea: %.2lf\n", aCadastro->studio.area);
-            printf("Possui Ar condicionado: %s\n", aCadastro->studio.arCond);
-            printf("Possui Internet e Tv a cabo: %s\n", aCadastro->studio.int_tv);
-            printf("Atendimento 24h: %s\n", aCadastro->studio.atend24);
-            printf("Possui lavanderia: %s\n", aCadastro->studio.lavanderia);
-            printf("Valor do condom√≠nio: %.2lf\n", aCadastro->studio.condominio);
-            printf("Possui piscina: %s\n", aCadastro->studio.piscina);
-            printf("Possui sauna: %s\n", aCadastro->studio.sauna);
-            printf("Possui sala de gin√°stica: %s\n", aCadastro->studio.ginastica);
-        }
-        count++;
-        aCadastro++;
+	int count = 0, i = 0;
+	while(i < 100){
+	    if(aCadastro[i].ID != 0){
+			printf("%d - %s\n",aCadastro[i].ID, aCadastro[i].tipo);
+	        printf("Cidade: %s\nBairro: %s\n",aCadastro[i].cidade, aCadastro[i].bairro);
+	        printf("Rua: %s\nCEP: %s\n",aCadastro[i].rua, aCadastro[i].CEP);
+	        printf("N˙mero: %d\n",aCadastro[i].numero);
+	        printf("Disponibilidade: %s\nValor: R$%.2lf\n",aCadastro[i].disp, aCadastro[i].valor);
+	
+	        if(strcmp(aCadastro[i].tipo,"CASA") == 0){
+	            printf("N˙mero de pavimentos: %d\n", aCadastro[i].casa.N_pav);
+	            printf("N˙mero de quartos: %d\n", aCadastro[i].casa.N_quartos);
+	            printf("¡rea do terreno: %.2lf\n", aCadastro[i].casa.area_terreno);
+	            printf("¡rea construida: %.2lf\n", aCadastro[i].casa.area_construida);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"APARTAMENTO") == 0){
+	            printf("N˙mero de andares: %d\n", aCadastro[i].apartamento.N_andar);
+	            printf("N˙mero de quartos: %d\n", aCadastro[i].apartamento.N_quartos);
+	            printf("¡rea: %.2lf\n", aCadastro[i].apartamento.area);
+	            printf("PosiÁ„o: %s\n", aCadastro[i].apartamento.posicao);
+	            printf("N˙mero de vagas na garagem: %d\n", aCadastro[i].apartamento.vagas_garag);
+	            printf("Valor do condomÌnio: %.2lf\n", aCadastro[i].apartamento.valor_cond);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"TERRENO") == 0){
+	            printf("¡rea do terreno: %.2lf\n", aCadastro[i].terreno.area);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"FLAT") == 0){
+	            printf("¡rea: %.2lf\n", aCadastro[i].flat.area);
+	            printf("Possui Ar condicionado: %s\n", aCadastro[i].flat.arCond);
+	            printf("Possui Internet e Tv a cabo: %s\n", aCadastro[i].flat.int_tv);
+	            printf("Atendimento 24h: %s\n", aCadastro[i].flat.atend24);
+	            printf("Possui lavanderia: %s\n", aCadastro[i].flat.lavanderia);
+	            printf("Valor do condomÌnio: %.2lf\n", aCadastro[i].flat.condominio);
+	            printf("Possui serviÁo de limpeza: %s\n", aCadastro[i].flat.limpeza);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"STUDIO") == 0){
+	            printf("¡rea: %.2lf\n", aCadastro[i].studio.area);
+	            printf("Possui Ar condicionado: %s\n", aCadastro[i].studio.arCond);
+	            printf("Possui Internet e Tv a cabo: %s\n", aCadastro[i].studio.int_tv);
+	            printf("Atendimento 24h: %s\n", aCadastro[i].studio.atend24);
+	            printf("Possui lavanderia: %s\n", aCadastro[i].studio.lavanderia);
+	            printf("Valor do condomÌnio: %.2lf\n", aCadastro[i].studio.condominio);
+	            printf("Possui piscina: %s\n", aCadastro[i].studio.piscina);
+	            printf("Possui sauna: %s\n", aCadastro[i].studio.sauna);
+	            printf("Possui sala de gin·stica: %s\n", aCadastro[i].studio.ginastica);
+	        }
+			count++;
+		}
+        i++;
     }
     if(!count)
        puts("0 itens encontrados.");
 }
 
-void AluguelBairro(tCadastro *aCadastro)
+void AluguelBairro()
 {
-    int i, flag = 0;
+    int i, flag = 0, f_counter = 0;
     char bairro[30];
 
     fgets(bairro,30,stdin);
@@ -115,17 +129,26 @@ void AluguelBairro(tCadastro *aCadastro)
     strupr(bairro);
 
     for(i = 0; i < 100; i++){
-        if((strcmp(aCadastro->bairro,bairro) == 0) && (strcmp(aCadastro->disp,"ALUGUEL") == 0 )){
-            printf("%d ", aCadastro->ID);
-            flag = 1;
-        }aCadastro++;
-    }if(!flag)
-    printf("N√£o foi encontrado nenhum im√≥vel dispon√≠vel para aluguel nesse bairro\n");
+        if((strcmp(aCadastro[i].bairro,bairro) == 0) && (strcmp(aCadastro[i].disp,"ALUGUEL") == 0 )){
+            f_counter++;
+            if(f_counter == 1)
+            	puts("ID's':");
+			printf("%d", aCadastro[i].ID);
+			if(i != 99)
+				printf(", ");
+			else
+				printf("\n");			
+			
+			flag = 1;
+        }
+    }
+	if(!flag)
+    	printf("N„o foi encontrado nenhum imÛvel disponÌvel para aluguel nesse bairro\n");
 }
 
-void VendaBairro(tCadastro *aCadastro)
+void VendaBairro()
 {
-    int i, flag = 0;
+    int i, flag = 0, f_counter = 0;
     char bairro[30];
 
     fgets(bairro,30,stdin);
@@ -133,15 +156,24 @@ void VendaBairro(tCadastro *aCadastro)
     strupr(bairro);
 
     for(i = 0; i < 100; i++){
-        if((strcmp(aCadastro->bairro,bairro) == 0) && (strcmp(aCadastro->disp,"VENDA") == 0 )){
-            printf("%d ", aCadastro->ID);
-            flag = 1;
-        }aCadastro++;
-    }if(!flag)
-    printf("N√£o foi encontrado nenhum im√≥vel dispon√≠vel para venda nesse bairro\n");
+        if((strcmp(aCadastro[i].bairro,bairro) == 0) && (strcmp(aCadastro[i].disp,"VENDA") == 0 )){
+            f_counter++;
+            if(f_counter == 1)
+            	puts("ID's':");
+			printf("%d", aCadastro[i].ID);
+			if(i != 99)
+				printf(", ");
+			else
+				printf("\n");			
+			
+			flag = 1;
+        }
+    }
+	if(!flag)
+    	printf("N„o foi encontrado nenhum imÛvel disponÌvel para venda nesse bairro\n");
 }
 
-void DispCidade(tCadastro *aCadastro)
+void DispCidade()
 {
     int i, flag = 0;
     char cidade[30];
@@ -151,52 +183,53 @@ void DispCidade(tCadastro *aCadastro)
     strupr(cidade);
 
     for(i = 0; i < 100; i++){
-        if(strcmp(aCadastro->cidade,cidade) == 0){
-            printf("%d-%s\n",aCadastro->ID, aCadastro->tipo);
-            printf("Cidade: %s\nBairro: %s\n",aCadastro->cidade, aCadastro->bairro);
-            printf("Rua: %s\nCEP: %s\n",aCadastro->rua, aCadastro->CEP);
-            printf("N√∫mero: %d\n",aCadastro->numero);
-            printf("Disponibilidade: %s\nValor: R$%.2lf\n",aCadastro->disp, aCadastro->valor);
+        if(strcmp(aCadastro[i].cidade,cidade) == 0){
+            printf("%d-%s\n",aCadastro[i].ID, aCadastro[i].tipo);
+            printf("Cidade: %s\nBairro: %s\n",aCadastro[i].cidade, aCadastro[i].bairro);
+            printf("Rua: %s\nCEP: %s\n",aCadastro[i].rua, aCadastro[i].CEP);
+            printf("N˙mero: %d\n",aCadastro[i].numero);
+            printf("Disponibilidade: %s\nValor: R$%.2lf\n",aCadastro[i].disp, aCadastro[i].valor);
 
-            if(strcmp(aCadastro->tipo,"CASA") == 0){
-            printf("N√∫mero de pavimentos: %d\n", aCadastro->casa.N_pav);
-            printf("N√∫mero de quartos: %d\n", aCadastro->casa.N_quartos);
-            printf("√Årea do terreno: %.2lf\n", aCadastro->casa.area_terreno);
-            printf("√Årea construida: %.2lf\n", aCadastro->casa.area_construida);
-        }
-        else if(strcmp(aCadastro->tipo,"APARTAMENTO") == 0){
-            printf("N√∫mero de andares: %d\n", aCadastro->apartamento.N_andar);
-            printf("N√∫mero de quartos: %d\n", aCadastro->apartamento.N_quartos);
-            printf("√Årea: %.2lf\n", aCadastro->apartamento.area);
-            printf("Posi√ß√£o: %s\n", aCadastro->apartamento.posicao);
-            printf("N√∫mero de vagas na garagem: %d\n", aCadastro->apartamento.vagas_garag);
-            printf("Valor do condom√≠nio: %.2lf\n", aCadastro->apartamento.valor_cond);
-        }
-        else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
-            printf("√Årea do terreno: %.2lf\n", aCadastro->terreno.area);
-        }
-        else if(strcmp(aCadastro->tipo,"FLAT") == 0){
-            printf("√Årea: %.2lf\n", aCadastro->flat.area);
-            printf("Possui Ar condicionado: %s\n", aCadastro->flat.arCond);
-            printf("Possui Internet e Tv a cabo: %s\n", aCadastro->flat.int_tv);
-            printf("Atendimento 24h: %s\n", aCadastro->flat.atend24);
-            printf("Possui lavanderia: %s\n", aCadastro->flat.lavanderia);
-            printf("Valor do condom√≠nio: %.2lf\n", aCadastro->flat.condominio);
-            printf("Possui servi√ßo de limpeza: %s\n", aCadastro->flat.limpeza);
-        }
-        else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
-            printf("√Årea: %.2lf\n", aCadastro->studio.area);
-            printf("Possui Ar condicionado: %s\n", aCadastro->studio.arCond);
-            printf("Possui Internet e Tv a cabo: %s\n", aCadastro->studio.int_tv);
-            printf("Atendimento 24h: %s\n", aCadastro->studio.atend24);
-            printf("Possui lavanderia: %s\n", aCadastro->studio.lavanderia);
-            printf("Valor do condom√≠nio: %.2lf\n", aCadastro->studio.condominio);
-            printf("Possui piscina: %s\n", aCadastro->studio.piscina);
-            printf("Possui sauna: %s\n", aCadastro->studio.sauna);
-            printf("Possui sala de gin√°stica: %s\n", aCadastro->studio.ginastica);
-        }
+            if(strcmp(aCadastro[i].tipo,"CASA") == 0){
+            printf("N˙mero de pavimentos: %d\n", aCadastro[i].casa.N_pav);
+            printf("N˙mero de quartos: %d\n", aCadastro[i].casa.N_quartos);
+            printf("¡rea do terreno: %.2lf\n", aCadastro[i].casa.area_terreno);
+            printf("¡Årea construida: %.2lf\n", aCadastro[i].casa.area_construida);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"APARTAMENTO") == 0){
+	            printf("N˙mero de andares: %d\n", aCadastro[i].apartamento.N_andar);
+	            printf("N˙mero de quartos: %d\n", aCadastro[i].apartamento.N_quartos);
+	            printf("¡rea: %.2lf\n", aCadastro[i].apartamento.area);
+	            printf("PosiÁ„o: %s\n", aCadastro[i].apartamento.posicao);
+	            printf("N˙mero de vagas na garagem: %d\n", aCadastro[i].apartamento.vagas_garag);
+	            printf("Valor do condomÌnio: %.2lf\n", aCadastro[i].apartamento.valor_cond);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"TERRENO") == 0){
+	            printf("¡Årea do terreno: %.2lf\n", aCadastro[i].terreno.area);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"FLAT") == 0){
+	            printf("¡rea: %.2lf\n", aCadastro[i].flat.area);
+	            printf("Possui Ar condicionado: %s\n", aCadastro[i].flat.arCond);
+	            printf("Possui Internet e Tv a cabo: %s\n", aCadastro[i].flat.int_tv);
+	            printf("Atendimento 24h: %s\n", aCadastro[i].flat.atend24);
+	            printf("Possui lavanderia: %s\n", aCadastro[i].flat.lavanderia);
+	            printf("Valor do condomÌnio: %.2lf\n", aCadastro[i].flat.condominio);
+	            printf("Possui serviÁo de limpeza: %s\n", aCadastro[i].flat.limpeza);
+	        }
+	        else if(strcmp(aCadastro[i].tipo,"STUDIO") == 0){
+	            printf("¡rea: %.2lf\n", aCadastro[i].studio.area);
+	            printf("Possui Ar condicionado: %s\n", aCadastro[i].studio.arCond);
+	            printf("Possui Internet e Tv a cabo: %s\n", aCadastro[i].studio.int_tv);
+	            printf("Atendimento 24h: %s\n", aCadastro[i].studio.atend24);
+	            printf("Possui lavanderia: %s\n", aCadastro[i].studio.lavanderia);
+	            printf("Valor do condomÌnio: %.2lf\n", aCadastro[i].studio.condominio);
+	            printf("Possui piscina: %s\n", aCadastro[i].studio.piscina);
+	            printf("Possui sauna: %s\n", aCadastro[i].studio.sauna);
+	            printf("Possui sala de gin·stica: %s\n", aCadastro[i].studio.ginastica);
+	        }
             flag = 1;
-        }aCadastro++;
-    }if(!flag)
-    printf("N√£o foi encontrado nenhum im√≥vel dispon√≠vel nessa cidade\n");
+        }
+    }
+	if(!flag)
+    	printf("N„o foi encontrado nenhum imÛvel disponÌvel nessa cidade\n");
 }
