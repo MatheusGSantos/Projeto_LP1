@@ -74,6 +74,8 @@ typedef struct
   tStudio studio;
 }tCadastro;
 
+tCadastro aCadastro[100] = {0};
+
 void read_data_struct(tCadastro *aCadastro, FILE *file){
 	if( !fread(aCadastro,sizeof(tCadastro),1,file) )
 		printf("Arquivo vazio, 0 itens importados\n");
@@ -91,87 +93,84 @@ void save_data_struct(tCadastro *aCadastro, FILE *file){
 	}
 }
 
-int change_index(tCadastro *array){
-  int counter = 0;
+int change_index(){
+  int counter = 0,i=0;
   while(1){
-    if(array->ID == 0){
-      printf("contador: %d\n", counter);
+    if(aCadastro[i].ID == 0){
       return counter;
     }else{
       counter++;
-      array++;
     }
+    i++;
   }
 }
 
-int Verifica_ID(tCadastro *aCadastro, int *ID)
+int Verifica_ID(int ID)
 {
     int a, count = 0;
 
     for(a = 0; a < 100; a++){
-        //printf("ID = %d\n", aCadastro->ID);
-        if(aCadastro->ID == *ID){
+        if(aCadastro[a].ID == ID){
             count++;
-
             if(count == 2){
                 printf("ID já cadastrado.\n");
-                return 1;}
+                return 1;
+            }
         }
-     aCadastro++;
     }
     return 0;
 }
 
-int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for válido, 1 se for inválido
+int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for inválido
 {
-
-  aCadastro += change_index(aCadastro);
-
-  printf("Informe o ID da transação: ");
-  scanf("%d", &aCadastro->ID);
-  getchar();
-
-  Verifica_ID(aCadastro, &aCadastro->ID);
-
-  printf("Informe o nome da cidade: ");
-  fgets(aCadastro->cidade,20,stdin);
-  aCadastro->cidade[strlen(aCadastro->cidade) - 1] = '\0';
-  strupr(aCadastro->cidade);
-
-  printf("Informe o nome do bairro: ");
-  fgets(aCadastro->bairro,30,stdin);
-  aCadastro->bairro[strlen(aCadastro->bairro) - 1] = '\0';
-  strupr(aCadastro->bairro);
-
-  printf("Informe o nome da rua: ");
-  fgets(aCadastro->rua,50,stdin);
-  aCadastro->rua[strlen(aCadastro->rua) - 1] = '\0';
-  strupr(aCadastro->rua);
-
-  printf("Informe o CEP: ");
-  fgets(aCadastro->CEP,11,stdin);
-  aCadastro->CEP[strlen(aCadastro->CEP) - 1] = '\0';
-
-  printf("Informe o número do imóvel: ");
-  scanf("%d", &aCadastro->numero);
-  getchar();
-
-  printf("Informe o tipo do imóvel: ");
-  fgets(aCadastro->tipo,13,stdin);
-  aCadastro->tipo[strlen(aCadastro->tipo) - 1] = '\0';
-  strupr(aCadastro->tipo);
-
-  printf("Informe se ele está disponível para aluguel ou venda: ");
-  fgets(aCadastro->disp,10,stdin);
-  aCadastro->disp[strlen(aCadastro->disp) - 1] = '\0';
-  strupr(aCadastro->disp);
+    int i = change_index(&aCadastro);
 
 
-  printf("Informe o valor do imóvel: ");
-  scanf("%lf", &aCadastro->valor);
+    printf("Informe o ID da transação: ");
+    scanf("%d", &aCadastro[i].ID);
+    getchar();
+
+    Verifica_ID(aCadastro[i].ID);
+
+    printf("Informe o nome da cidade: ");
+    fgets(aCadastro->cidade,20,stdin);
+    aCadastro->cidade[strlen(aCadastro->cidade) - 1] = '\0';
+    strupr(aCadastro->cidade);
+
+    printf("Informe o nome do bairro: ");
+    fgets(aCadastro->bairro,30,stdin);
+    aCadastro->bairro[strlen(aCadastro->bairro) - 1] = '\0';
+    strupr(aCadastro->bairro);
+
+    printf("Informe o nome da rua: ");
+    fgets(aCadastro->rua,50,stdin);
+    aCadastro->rua[strlen(aCadastro->rua) - 1] = '\0';
+    strupr(aCadastro->rua);
+
+    printf("Informe o CEP: ");
+    fgets(aCadastro->CEP,11,stdin);
+    aCadastro->CEP[strlen(aCadastro->CEP) - 1] = '\0';
+
+    printf("Informe o número do imóvel: ");
+    scanf("%d", &aCadastro->numero);
+    getchar();
+
+    printf("Informe o tipo do imóvel: ");
+    fgets(aCadastro->tipo,13,stdin);
+    aCadastro->tipo[strlen(aCadastro->tipo) - 1] = '\0';
+    strupr(aCadastro->tipo);
+
+    printf("Informe se ele está disponível para aluguel ou venda: ");
+    fgets(aCadastro->disp,10,stdin);
+    aCadastro->disp[strlen(aCadastro->disp) - 1] = '\0';
+    strupr(aCadastro->disp);
 
 
-  if(strcmp(aCadastro->tipo,"CASA") == 0){
+    printf("Informe o valor do imóvel: ");
+    scanf("%lf", &aCadastro[i].valor);
+
+
+    if(strcmp(aCadastro->tipo,"CASA") == 0){
     printf("Informe o número de pavimentos: ");
     scanf("%d", &aCadastro->casa.N_pav);
 
@@ -184,10 +183,10 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for váli
     printf("Informe a área construída: ");
     scanf("%lf", &aCadastro->casa.area_construida);
     getchar();
-  }
+    }
 
 
-  else if(strcmp(aCadastro->tipo,"APARTAMENTO") == 0){
+    else if(strcmp(aCadastro->tipo,"APARTAMENTO") == 0){
     printf("Informe a área do apartamento: ");
     scanf("%lf", &aCadastro->apartamento.area);
 
@@ -209,12 +208,12 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for váli
     getchar();
 
 
-  }else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
+    }else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
     printf("Informe a área do terreno: ");
     scanf("%lf", &aCadastro->terreno.area);
     getchar();
 
-  }else if(strcmp(aCadastro->tipo,"FLAT") == 0){
+    }else if(strcmp(aCadastro->tipo,"FLAT") == 0){
     printf("Informe a área do terreno: ");
     scanf("%lf", &aCadastro->flat.area);
 
@@ -247,9 +246,11 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for váli
     aCadastro->flat.atend24[strlen(aCadastro->flat.atend24) - 1] = '\0';
     strlwr(aCadastro->flat.atend24);
 
-  }else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
+
+    }else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
     printf("Informe a área do terreno: ");
     scanf("%lf", &aCadastro->studio.area);
+    getchar();
 
     printf("Informe o valor do condomínio: ");
     scanf("%lf", &aCadastro->studio.condominio);
@@ -295,39 +296,27 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for váli
     aCadastro->studio.ginastica[strlen(aCadastro->studio.ginastica) - 1] = '\0';
     strlwr(aCadastro->studio.ginastica);
 
-  }else{
+    }else{
     printf("Tipo invalido\n");
     return 1;
-  }
+    }
 
-  return 0;
+    return 0;
 }
 
-tCadastro aCadastro[100] = {0};
+
 
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
     int i;
 
-    puts("Array antes do cadastro:");
-    for(i = 0; i<100; i++){
-        printf("%d ", aCadastro[i].ID);
-        if(i == 99){
-            printf("\n");
-        }
-    }
-
-    Cadastro(aCadastro);
+    Cadastro();
     printf("\n");
 
-    puts("Array depois do cadastro 1:");
-    for(i = 0; i<100; i++){
-        printf("%d ", aCadastro[i].ID);
-        if(i == 99){
-            printf("\n");
-        }
-    }
+    Cadastro();
+    printf("\n");
+
     Cadastro(aCadastro);
     printf("\n");
 
