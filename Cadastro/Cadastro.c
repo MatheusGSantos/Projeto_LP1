@@ -2,6 +2,7 @@
 #include <string.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <windows.h>
 
 typedef struct
 {
@@ -105,6 +106,19 @@ int change_index(){
   }
 }
 
+void Apaga_Cadastro(int ID)
+{
+    int a;
+    for(a = 0; a < 100; a++){
+        if(aCadastro[a].ID == ID){
+            aCadastro[a].ID = 0;
+            printf("Cadastro apagado com sucesso!\n");
+            Sleep(2000);
+            break;
+        }
+    }
+}
+
 int Verifica_ID(int ID)
 {
     int a, count = 0;
@@ -130,7 +144,10 @@ int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for invál
     scanf("%d", &aCadastro[i].ID);
     getchar();
 
-    Verifica_ID(aCadastro[i].ID);
+    if(Verifica_ID(aCadastro[i].ID)){
+        aCadastro[i].ID = 0;
+        return 1;
+    }
 
     printf("Informe o nome da cidade: ");
     fgets(aCadastro[i].cidade,20,stdin);
@@ -306,7 +323,7 @@ int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for invál
 
 
 
-int main()
+/*int main()
 {
     setlocale(LC_ALL, "Portuguese");
     int i;
@@ -323,3 +340,4 @@ int main()
 
     return 0;
 }
+*/
