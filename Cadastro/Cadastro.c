@@ -82,7 +82,7 @@ void read_data_struct(tCadastro *aCadastro, FILE *file){
 		while(fread(aCadastro,sizeof(tCadastro),1,file)){
 			aCadastro++;
 		}
-	}	
+	}
 }
 
 void save_data_struct(tCadastro *aCadastro, FILE *file){
@@ -95,6 +95,7 @@ int change_index(tCadastro *array){
   int counter = 0;
   while(1){
     if(array->ID == 0){
+      printf("contador: %d\n", counter);
       return counter;
     }else{
       counter++;
@@ -103,15 +104,34 @@ int change_index(tCadastro *array){
   }
 }
 
+int Verifica_ID(tCadastro *aCadastro, int *ID)
+{
+    int a, count = 0;
 
-int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for v√°lido, 1 se for inv√°lido
+    for(a = 0; a < 100; a++){
+        //printf("ID = %d\n", aCadastro->ID);
+        if(aCadastro->ID == *ID){
+            count++;
+
+            if(count == 2){
+                printf("ID j· cadastrado.\n");
+                return 1;}
+        }
+     aCadastro++;
+    }
+    return 0;
+}
+
+int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for v·lido, 1 se for inv·lido
 {
 
- aCadastro += change_index(aCadastro);
+  aCadastro += change_index(aCadastro);
 
-  printf("Informe o ID da transa√ß√£o: ");
+  printf("Informe o ID da transaÁ„o: ");
   scanf("%d", &aCadastro->ID);
   getchar();
+
+  Verifica_ID(aCadastro, &aCadastro->ID);
 
   printf("Informe o nome da cidade: ");
   fgets(aCadastro->cidade,20,stdin);
@@ -132,145 +152,145 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for v√°l
   fgets(aCadastro->CEP,11,stdin);
   aCadastro->CEP[strlen(aCadastro->CEP) - 1] = '\0';
 
-  printf("Informe o n√∫mero do im√≥vel: ");
+  printf("Informe o n˙mero do imÛvel: ");
   scanf("%d", &aCadastro->numero);
   getchar();
 
-  printf("Informe o tipo do im√≥vel: ");
+  printf("Informe o tipo do imÛvel: ");
   fgets(aCadastro->tipo,13,stdin);
   aCadastro->tipo[strlen(aCadastro->tipo) - 1] = '\0';
   strupr(aCadastro->tipo);
 
-  printf("Informe se ele est√° dispon√≠vel para aluguel ou venda: ");
+  printf("Informe se ele est· disponÌvel para aluguel ou venda: ");
   fgets(aCadastro->disp,10,stdin);
   aCadastro->disp[strlen(aCadastro->disp) - 1] = '\0';
   strupr(aCadastro->disp);
 
 
-  printf("Informe o valor do im√≥vel: ");
+  printf("Informe o valor do imÛvel: ");
   scanf("%lf", &aCadastro->valor);
 
 
   if(strcmp(aCadastro->tipo,"CASA") == 0){
-    printf("Informe o n√∫mero de pavimentos: ");
+    printf("Informe o n˙mero de pavimentos: ");
     scanf("%d", &aCadastro->casa.N_pav);
 
-    printf("Informe o n√∫mero de quartos: ");
+    printf("Informe o n˙mero de quartos: ");
     scanf("%d", &aCadastro->casa.N_quartos);
 
-    printf("Informe a √°rea do terreno: ");
+    printf("Informe a ·rea do terreno: ");
     scanf("%lf", &aCadastro->casa.area_terreno);
 
-    printf("Informe a √°rea constru√≠da: ");
+    printf("Informe a ·rea construÌda: ");
     scanf("%lf", &aCadastro->casa.area_construida);
     getchar();
   }
 
 
   else if(strcmp(aCadastro->tipo,"APARTAMENTO") == 0){
-    printf("Informe a √°rea do apartamento: ");
+    printf("Informe a ·rea do apartamento: ");
     scanf("%lf", &aCadastro->apartamento.area);
 
-    printf("Informe o n√∫mero de quartos: ");
+    printf("Informe o n˙mero de quartos: ");
     scanf("%d", &aCadastro->apartamento.N_quartos);
 
-    printf("Informe a posi√ß√£o: ");
+    printf("Informe a posiÁ„o: ");
     fgets(aCadastro->apartamento.posicao,50,stdin);
     aCadastro->apartamento.posicao[strlen(aCadastro->apartamento.posicao) - 1] = '\0';
 
-    printf("Informe o andar no pr√©dio: ");
+    printf("Informe o andar no prÈdio: ");
     scanf("%d", &aCadastro->apartamento.N_andar);
 
-    printf("Informe o valor do condom√≠nio: ");
+    printf("Informe o valor do condomÌnio: ");
     scanf("%lf", &aCadastro->apartamento.valor_cond);
 
-    printf("Informe o n√∫mero de vagas na garagem: ");
+    printf("Informe o n˙mero de vagas na garagem: ");
     scanf("%d", &aCadastro->apartamento.vagas_garag);
     getchar();
 
 
   }else if(strcmp(aCadastro->tipo,"TERRENO") == 0){
-    printf("Informe a √°rea do terreno: ");
+    printf("Informe a ·rea do terreno: ");
     scanf("%lf", &aCadastro->terreno.area);
     getchar();
 
   }else if(strcmp(aCadastro->tipo,"FLAT") == 0){
-    printf("Informe a √°rea do terreno: ");
+    printf("Informe a ·rea do terreno: ");
     scanf("%lf", &aCadastro->flat.area);
 
-    printf("Informe o valor do condom√≠nio: ");
+    printf("Informe o valor do condomÌnio: ");
     scanf("%lf", &aCadastro->flat.condominio);
     getchar();
 
-    printf("Disp√µe de ar-condicionado? ");
+    printf("Dispıe de ar-condicionado? ");
     fgets(aCadastro->flat.arCond,5,stdin);
     aCadastro->flat.arCond[strlen(aCadastro->flat.arCond) - 1] = '\0';
     strlwr(aCadastro->flat.arCond);
 
-    printf("Disp√µe de internet e TV a cabo? ");
+    printf("Dispıe de internet e TV a cabo? ");
     fgets(aCadastro->flat.int_tv,5,stdin);
     aCadastro->flat.int_tv[strlen(aCadastro->flat.int_tv) - 1] = '\0';
     strlwr(aCadastro->flat.int_tv);
 
-    printf("Disp√µe de lavanderia? ");
+    printf("Dispıe de lavanderia? ");
     fgets(aCadastro->flat.lavanderia,5,stdin);
     aCadastro->flat.lavanderia[strlen(aCadastro->flat.lavanderia) - 1] = '\0';
     strlwr(aCadastro->flat.lavanderia);
 
-    printf("Disp√µe de arruma√ß√£o/limpeza? ");
+    printf("Dispıe de arrumaÁ„o/limpeza? ");
     fgets(aCadastro->flat.limpeza,5,stdin);
     aCadastro->flat.limpeza[strlen(aCadastro->flat.limpeza) - 1] = '\0';
     strlwr(aCadastro->flat.limpeza);
 
-    printf("Disp√µe de recep√ß√£o 24h? ");
+    printf("Dispıe de recepÁ„o 24h? ");
     fgets(aCadastro->flat.atend24,5,stdin);
     aCadastro->flat.atend24[strlen(aCadastro->flat.atend24) - 1] = '\0';
     strlwr(aCadastro->flat.atend24);
 
   }else if(strcmp(aCadastro->tipo,"STUDIO") == 0){
-    printf("Informe a √°rea do terreno: ");
+    printf("Informe a ·rea do terreno: ");
     scanf("%lf", &aCadastro->studio.area);
 
-    printf("Informe o valor do condom√≠nio: ");
+    printf("Informe o valor do condomÌnio: ");
     scanf("%lf", &aCadastro->studio.condominio);
     getchar();
 
-    printf("Disp√µe de ar-condicionado? ");
+    printf("Dispıe de ar-condicionado? ");
     fgets(aCadastro->studio.arCond,5,stdin);
     aCadastro->studio.arCond[strlen(aCadastro->studio.arCond) - 1] = '\0';
     strlwr(aCadastro->studio.arCond);
 
-    printf("Disp√µe de internet e TV a cabo? ");
+    printf("Dispıe de internet e TV a cabo? ");
     fgets(aCadastro->studio.int_tv,5,stdin);
     aCadastro->studio.int_tv[strlen(aCadastro->studio.int_tv) - 1] = '\0';
     strlwr(aCadastro->studio.int_tv);
 
-    printf("Disp√µe de lavanderia? ");
+    printf("Dispıe de lavanderia? ");
     fgets(aCadastro->studio.lavanderia,5,stdin);
     aCadastro->studio.lavanderia[strlen(aCadastro->studio.lavanderia) - 1] = '\0';
     strlwr(aCadastro->studio.lavanderia);
 
-    printf("Disp√µe de arruma√ß√£o/limpeza? ");
+    printf("Dispıe de arrumaÁ„o/limpeza? ");
     fgets(aCadastro->studio.limpeza,5,stdin);
     strlwr(aCadastro->studio.limpeza);
     aCadastro->studio.limpeza[strlen(aCadastro->studio.limpeza) - 1] = '\0';
 
-    printf("Disp√µe de recep√ß√£o 24h? ");
+    printf("Dispıe de recepÁ„o 24h? ");
     fgets(aCadastro->studio.atend24,5,stdin);
     aCadastro->studio.atend24[strlen(aCadastro->studio.atend24) - 1] = '\0';
     strlwr(aCadastro->studio.atend24);
 
-    printf("Disp√µes de piscina? ");
+    printf("Dispıes de piscina? ");
     fgets(aCadastro->studio.piscina,5,stdin);
     aCadastro->studio.piscina[strlen(aCadastro->studio.piscina) - 1] = '\0';
     strlwr(aCadastro->studio.piscina);
 
-    printf("Disp√µes de sauna? ");
+    printf("Dispıes de sauna? ");
     fgets(aCadastro->studio.sauna,5,stdin);
     aCadastro->studio.sauna[strlen(aCadastro->studio.sauna) - 1] = '\0';
     strlwr(aCadastro->studio.sauna);
 
-    printf("Disp√µes de gin√°stica? ");
+    printf("Dispıes de gin·stica? ");
     fgets(aCadastro->studio.ginastica,5,stdin);
     aCadastro->studio.ginastica[strlen(aCadastro->studio.ginastica) - 1] = '\0';
     strlwr(aCadastro->studio.ginastica);
@@ -283,36 +303,34 @@ int Cadastro(tCadastro *aCadastro)    //retorna 0 se o tipo de cadastro for v√°l
   return 0;
 }
 
-/*int main()
+tCadastro aCadastro[100] = {0};
+
+int main()
 {
     setlocale(LC_ALL, "Portuguese");
-
     int i;
 
-    tCadastro aCadastro[100] = {0};
+    puts("Array antes do cadastro:");
+    for(i = 0; i<100; i++){
+        printf("%d ", aCadastro[i].ID);
+        if(i == 99){
+            printf("\n");
+        }
+    }
 
     Cadastro(aCadastro);
-
-    printf("\n");
-    show_all(aCadastro);
-    printf("\n");
-    show_descricao(aCadastro);
     printf("\n");
 
-    consultaVendaTipo(aCadastro);
+    puts("Array depois do cadastro 1:");
+    for(i = 0; i<100; i++){
+        printf("%d ", aCadastro[i].ID);
+        if(i == 99){
+            printf("\n");
+        }
+    }
+    Cadastro(aCadastro);
     printf("\n");
 
-    consultaAlugaTipo(aCadastro);
-    printf("\n");
-
-    AluguelBairro(aCadastro);
-    printf("\n");
-
-    VendaBairro(aCadastro);
-    printf("\n\n");
-
-    DispCidade(aCadastro);
-    printf("\n\n");
 
     return 0;
-}*/
+}
