@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 typedef struct
 {
   int N_pav;
