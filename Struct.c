@@ -70,3 +70,5 @@ typedef struct
 	tFlat flat;
 	tStudio studio;
 }tCadastro;
+
+tCadastro aCadastro[100];

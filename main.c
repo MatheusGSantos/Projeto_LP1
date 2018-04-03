@@ -1,24 +1,21 @@
 #include <stdio.h>
 #include <locale.h>
+#include <stdlib.h>
 #include <string.h>
 #include <Windows.h>
-#include <Struct.h>
-#include <Cadastro.h>
-#include <Consulta.h>
+#include "Cadastro.h"
+#include "Struct.h"
+#include "Consulta.h"
 
 
-tCadastro aCadastro[100] = {0};
-
-int main()
-{
-    setlocale(LC_ALL,"Portuguese");
+int main(){
 	system("color F0");
-    
     FILE *file = fopen("dados.dat","rb+");
-    read_data_struct(aCadastro, file);
-    
+    read_data_struct(file);
+    int op;
+    int ID = 0;
+
     Menu:          //menu
-        int op;
         system("cls");
         printf("\t\t\t\tImobiliaria X\n\n");
 
@@ -45,10 +42,10 @@ int main()
         }else if(op == 2){
             Consulta:
                 system("cls");
-                printf("1-Todos os imóveis\n2-Descrição todos os imóveis\n"
-                    "3-Disponíveis para venda por tipo\n4-Disponíveis para aluguel por tipo\n"
-                    "\n5-Disponíveis para venda por bairro\n6-Disponíveis para aluguel por tipo\n"
-                    "\n7-Descrição de todos disponíveis por cidade\n0-Voltar\n\nR: ");
+                printf("1-Todos os imoveis\n2-Descricao todos os imoveis\n"
+                    "3-Disponiveis para venda por tipo\n4-Disponiveis para aluguel por tipo\n"
+                    "\n5-Disponiveis para venda por bairro\n6-Disponiveis para aluguel por tipo\n"
+                    "\n7-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ");
 
                 int op = 0;
                 scanf("%d", &op);
@@ -79,7 +76,7 @@ int main()
                     case 6:
                         system("cls");
                         printf("Informe o bairro a ser consultado:");
-                        AluguelBairro()
+                        AluguelBairro();
                         break;
                     case 7:
                         system("cls");
@@ -100,7 +97,6 @@ int main()
                 }
         }else if(op == 3){
             Apagar:
-                int ID = 0;
                 printf("Informe o ID a do processo(0 para cancelar): ");
                 scanf("%d", &ID);
                 if(ID == 0){
@@ -117,10 +113,10 @@ int main()
                     goto Menu;
                 }
 
-        }else{   
+        }else{
             fclose(file);
             printf("Fechando programa...\n\n");
-            Sleep(3000);
+            //Sleep(3000);
             return 0;
         }
         return 0;
