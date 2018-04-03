@@ -174,12 +174,12 @@ int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for invál
 		aCadastro[i].flat.lavanderia[strlen(aCadastro[i].flat.lavanderia) - 1] = '\0';
 		strlwr(aCadastro[i].flat.lavanderia);
 
-		printf("Dispoe de arrumação/limpeza? ");
+		printf("Dispoe de arrumacao/limpeza? ");
 		fgets(aCadastro[i].flat.limpeza,5,stdin);
 		aCadastro[i].flat.limpeza[strlen(aCadastro[i].flat.limpeza) - 1] = '\0';
 		strlwr(aCadastro[i].flat.limpeza);
 
-		printf("Dispoe de recepção 24h? ");
+		printf("Dispoe de recepcao 24h? ");
 		fgets(aCadastro[i].flat.atend24,5,stdin);
 		aCadastro[i].flat.atend24[strlen(aCadastro[i].flat.atend24) - 1] = '\0';
 		strlwr(aCadastro[i].flat.atend24);

@@ -43,12 +43,13 @@ int main(){
             Consulta:
                 system("cls");
                 printf("1-Todos os imoveis\n2-Descricao todos os imoveis\n"
-                    "3-Disponiveis para venda por tipo\n4-Disponiveis para aluguel por tipo\n"
+                    "3-Disponiveis para venda por tipo\n4-Disponiveis para aluguel por tipo"
                     "\n5-Disponiveis para venda por bairro\n6-Disponiveis para aluguel por tipo\n"
-                    "\n7-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ");
+                    "7-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ");
 
                 int op = 0;
                 scanf("%d", &op);
+                getchar();
                 switch(op){
                     case 1:
                         system("cls");
@@ -103,6 +104,7 @@ int main(){
                     goto Menu;
                 }else
                     Apaga_Cadastro(ID);
+                    save_data_struct(file);
 
                 printf("\n\n1-Apagar outro cadastro\t2-Menu Principal\nR: ");
                 scanf("%d", &op);
