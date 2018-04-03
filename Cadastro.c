@@ -1,10 +1,9 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <string.h>
 #include <locale.h>
-#include <Struct.h>
+#include "Struct.h"
 #include <windows.h>
 
-setlocale(LC_ALL,"Portuguese");
 
 void read_data_struct(FILE *file){
 	fseek(file,0, SEEK_SET);
@@ -19,6 +18,7 @@ void save_data_struct(FILE *file){
 }
 
 int change_index(){
+
 	int counter = 0,i=0;
 	while(1){
 		if(aCadastro[i].ID == 0){
@@ -51,7 +51,7 @@ int Verifica_ID(int ID)
 		if(aCadastro[a].ID == ID){
 			count++;
 			if(count == 2){
-					printf("ID já cadastrado. Tente novamente\n");
+					printf("ID ja cadastrado. Tente novamente\n");
 					Sleep(2000);
 					return 1;
 			}
@@ -65,7 +65,7 @@ int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for invál
 	int i = change_index(&aCadastro);
 
 
-	printf("Informe o ID da transação: ");
+	printf("Informe o ID da transacao: ");
 	scanf("%d", &aCadastro[i].ID);
 	getchar();
 
@@ -93,140 +93,141 @@ int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for invál
 	fgets(aCadastro[i].CEP,11,stdin);
 	aCadastro[i].CEP[strlen(aCadastro[i].CEP) - 1] = '\0';
 
-	printf("Informe o número do imóvel: ");
+	printf("Informe o numero do imovel: ");
 	scanf("%d", &aCadastro[i].numero);
 	getchar();
 
-	printf("Informe o tipo do imóvel: ");
+	printf("Informe o tipo do imovel: ");
 	fgets(aCadastro[i].tipo,13,stdin);
 	aCadastro[i].tipo[strlen(aCadastro[i].tipo) - 1] = '\0';
 	strupr(aCadastro[i].tipo);
 
-	printf("Informe se ele está disponível para aluguel ou venda: ");
+	printf("Informe se ele esta disponivel para aluguel ou venda: ");
 	fgets(aCadastro[i].disp,10,stdin);
 	aCadastro[i].disp[strlen(aCadastro[i].disp) - 1] = '\0';
 	strupr(aCadastro[i].disp);
 
 
-	printf("Informe o valor do imóvel: ");
+	printf("Informe o valor do imovel: ");
 	scanf("%lf", &aCadastro[i].valor);
 
 
 	if(strcmp(aCadastro[i].tipo,"CASA") == 0){
-		printf("Informe o número de pavimentos: ");
+		printf("Informe o numero de pavimentos: ");
 		scanf("%d", &aCadastro[i].casa.N_pav);
 
-		printf("Informe o número de quartos: ");
+		printf("Informe o numero de quartos: ");
 		scanf("%d", &aCadastro[i].casa.N_quartos);
 
-		printf("Informe a área do terreno: ");
+		printf("Informe a area do terreno: ");
 		scanf("%lf", &aCadastro[i].casa.area_terreno);
 
-		printf("Informe a área construída: ");
+		printf("Informe a area construida: ");
 		scanf("%lf", &aCadastro[i].casa.area_construida);
 		getchar();
 	}else if(strcmp(aCadastro[i].tipo,"APARTAMENTO") == 0){
-		printf("Informe a área do apartamento: ");
+		printf("Informe a area do apartamento: ");
 		scanf("%lf", &aCadastro[i].apartamento.area);
 
-		printf("Informe o número de quartos: ");
+		printf("Informe o numero de quartos: ");
 		scanf("%d", &aCadastro[i].apartamento.N_quartos);
 
-		printf("Informe a posição: ");
+		printf("Informe a posicao: ");
+		getchar();
 		fgets(aCadastro[i].apartamento.posicao,50,stdin);
 		aCadastro[i].apartamento.posicao[strlen(aCadastro[i].apartamento.posicao) - 1] = '\0';
 
-		printf("Informe o andar no prédio: ");
+		printf("Informe o andar no predio: ");
 		scanf("%d", &aCadastro[i].apartamento.N_andar);
 
-		printf("Informe o valor do condomínio: ");
+		printf("Informe o valor do condominio: ");
 		scanf("%lf", &aCadastro[i].apartamento.valor_cond);
 
-		printf("Informe o número de vagas na garagem: ");
+		printf("Informe o numero de vagas na garagem: ");
 		scanf("%d", &aCadastro[i].apartamento.vagas_garag);
 		getchar();
 	}else if(strcmp(aCadastro[i].tipo,"TERRENO") == 0){
-		printf("Informe a área do terreno: ");
+		printf("Informe a area do terreno: ");
 		scanf("%lf", &aCadastro[i].terreno.area);
 		getchar();
 
 	}else if(strcmp(aCadastro[i].tipo,"FLAT") == 0){
-		printf("Informe a área do terreno: ");
+		printf("Informe a area do terreno: ");
 		scanf("%lf", &aCadastro[i].flat.area);
 
-		printf("Informe o valor do condomínio: ");
+		printf("Informe o valor do condominio: ");
 		scanf("%lf", &aCadastro[i].flat.condominio);
 		getchar();
 
-		printf("Dispõe de ar-condicionado? ");
+		printf("Dispoe de ar-condicionado? ");
 		fgets(aCadastro[i].flat.arCond,5,stdin);
 		aCadastro[i].flat.arCond[strlen(aCadastro[i].flat.arCond) - 1] = '\0';
 		strlwr(aCadastro[i].flat.arCond);
 
-		printf("Dispõe de internet e TV a cabo? ");
+		printf("Dispoe de internet e TV a cabo? ");
 		fgets(aCadastro[i].flat.int_tv,5,stdin);
 		aCadastro[i].flat.int_tv[strlen(aCadastro[i].flat.int_tv) - 1] = '\0';
 		strlwr(aCadastro[i].flat.int_tv);
 
-		printf("Dispõe de lavanderia? ");
+		printf("Dispoe de lavanderia? ");
 		fgets(aCadastro[i].flat.lavanderia,5,stdin);
 		aCadastro[i].flat.lavanderia[strlen(aCadastro[i].flat.lavanderia) - 1] = '\0';
 		strlwr(aCadastro[i].flat.lavanderia);
 
-		printf("Dispõe de arrumação/limpeza? ");
+		printf("Dispoe de arrumação/limpeza? ");
 		fgets(aCadastro[i].flat.limpeza,5,stdin);
 		aCadastro[i].flat.limpeza[strlen(aCadastro[i].flat.limpeza) - 1] = '\0';
 		strlwr(aCadastro[i].flat.limpeza);
 
-		printf("Dispõe de recepção 24h? ");
+		printf("Dispoe de recepção 24h? ");
 		fgets(aCadastro[i].flat.atend24,5,stdin);
 		aCadastro[i].flat.atend24[strlen(aCadastro[i].flat.atend24) - 1] = '\0';
 		strlwr(aCadastro[i].flat.atend24);
 	}else if(strcmp(aCadastro[i].tipo,"STUDIO") == 0){
-		printf("Informe a área do terreno: ");
+		printf("Informe a area do terreno: ");
 		scanf("%lf", &aCadastro[i].studio.area);
 		getchar();
 
-		printf("Informe o valor do condomínio: ");
+		printf("Informe o valor do condominio: ");
 		scanf("%lf", &aCadastro[i].studio.condominio);
 		getchar();
 
-		printf("Dispõe de ar-condicionado? ");
+		printf("Dispoe de ar-condicionado? ");
 		fgets(aCadastro[i].studio.arCond,5,stdin);
 		aCadastro[i].studio.arCond[strlen(aCadastro[i].studio.arCond) - 1] = '\0';
 		strlwr(aCadastro[i].studio.arCond);
 
-		printf("Dispõe de internet e TV a cabo? ");
+		printf("Dispoe de internet e TV a cabo? ");
 		fgets(aCadastro[i].studio.int_tv,5,stdin);
 		aCadastro[i].studio.int_tv[strlen(aCadastro[i].studio.int_tv) - 1] = '\0';
 		strlwr(aCadastro[i].studio.int_tv);
 
-		printf("Dispõe de lavanderia? ");
+		printf("Dispoe de lavanderia? ");
 		fgets(aCadastro[i].studio.lavanderia,5,stdin);
 		aCadastro[i].studio.lavanderia[strlen(aCadastro[i].studio.lavanderia) - 1] = '\0';
 		strlwr(aCadastro[i].studio.lavanderia);
 
-		printf("Dispõe de arrumação/limpeza? ");
+		printf("Dispoe de arrumacao/limpeza? ");
 		fgets(aCadastro[i].studio.limpeza,5,stdin);
 		strlwr(aCadastro[i].studio.limpeza);
 		aCadastro[i].studio.limpeza[strlen(aCadastro[i].studio.limpeza) - 1] = '\0';
 
-		printf("Dispõe de recepção 24h? ");
+		printf("Dispoe de recepcao 24h? ");
 		fgets(aCadastro[i].studio.atend24,5,stdin);
 		aCadastro[i].studio.atend24[strlen(aCadastro[i].studio.atend24) - 1] = '\0';
 		strlwr(aCadastro[i].studio.atend24);
 
-		printf("Dispões de piscina? ");
+		printf("Dispoe de piscina? ");
 		fgets(aCadastro[i].studio.piscina,5,stdin);
 		aCadastro[i].studio.piscina[strlen(aCadastro[i].studio.piscina) - 1] = '\0';
 		strlwr(aCadastro[i].studio.piscina);
 
-		printf("Dispões de sauna? ");
+		printf("Dispoe de sauna? ");
 		fgets(aCadastro[i].studio.sauna,5,stdin);
 		aCadastro[i].studio.sauna[strlen(aCadastro[i].studio.sauna) - 1] = '\0';
 		strlwr(aCadastro[i].studio.sauna);
 
-		printf("Dispões de ginástica? ");
+		printf("Dispoe de ginastica? ");
 		fgets(aCadastro[i].studio.ginastica,5,stdin);
 		aCadastro[i].studio.ginastica[strlen(aCadastro[i].studio.ginastica) - 1] = '\0';
 		strlwr(aCadastro[i].studio.ginastica);
