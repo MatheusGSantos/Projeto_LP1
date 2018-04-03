@@ -34,12 +34,12 @@ void Apaga_Cadastro(int ID)
 {
 	int a;
 	for(a = 0; a < 100; a++){
-			if(aCadastro[a].ID == ID){
-					aCadastro[a].ID = 0;
-					printf("Cadastro apagado com sucesso!\n");
-					Sleep(2000);
-					break;
-			}
+		if(aCadastro[a].ID == ID){
+			aCadastro[a].ID = 0;
+			printf("Cadastro apagado com sucesso!\n");
+			Sleep(2000);
+			break;
+		}
 	}
 }
 
@@ -48,13 +48,14 @@ int Verifica_ID(int ID)
 	int a, count = 0;
 
 	for(a = 0; a < 100; a++){
-			if(aCadastro[a].ID == ID){
-					count++;
-					if(count == 2){
-							printf("ID já cadastrado.\n");
-							return 1;
-					}
+		if(aCadastro[a].ID == ID){
+			count++;
+			if(count == 2){
+					printf("ID já cadastrado. Tente novamente\n");
+					Sleep(2000);
+					return 1;
 			}
+		}
 	}
 	return 0;
 }
@@ -230,7 +231,9 @@ int Cadastro()    //retorna 0 se o tipo de cadastro for válido, 1 se for invál
 		aCadastro[i].studio.ginastica[strlen(aCadastro[i].studio.ginastica) - 1] = '\0';
 		strlwr(aCadastro[i].studio.ginastica);
 	}else{
-		printf("Tipo invalido\n");
+		printf("Tipo invalido. Tente novamente\n");
+		Sleep(2000);
+		aCadastro[i].ID = 0;
 		return 1;
 	}
 	return 0;
