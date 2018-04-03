@@ -16,10 +16,10 @@ void consultaVendaTipo()
 
     for(i = 0; i < 100; i++){
         if( (strcmp(aCadastro[i].tipo, tipo) == 0) && (strcmp(aCadastro[i].disp, "VENDA") == 0 )){
-            printf("%d", aCadastro[i].ID);
+            printf("%d;", aCadastro[i].ID);
             flag = 1;
             if(i != 99)
-            	printf(", ");
+            	printf(" ");
 			else	
 				printf("\n");
         }
@@ -38,7 +38,11 @@ void consultaAlugaTipo()
 
     for(i = 0; i < 100; i++){
         if((strcmp(aCadastro[i].tipo,tipo) == 0) && (strcmp(aCadastro[i].disp,"ALUGUEL") == 0 )){
-            printf("%d ", aCadastro[i].ID);
+            printf("%d;", aCadastro[i].ID);
+            if(i != 99)
+            	printf(" ");
+			else	
+				printf("\n");
             flag = 1;
         }
     }
@@ -80,6 +84,7 @@ void show_descricao()
 	            printf("Número de quartos: %d\n", aCadastro[i].casa.N_quartos);
 	            printf("Área do terreno: %.2lf\n", aCadastro[i].casa.area_terreno);
 	            printf("Área construida: %.2lf\n", aCadastro[i].casa.area_construida);
+	            printf("........................................................\n");
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"APARTAMENTO") == 0){
 	            printf("Número de andares: %d\n", aCadastro[i].apartamento.N_andar);
@@ -88,9 +93,11 @@ void show_descricao()
 	            printf("Posição: %s\n", aCadastro[i].apartamento.posicao);
 	            printf("Número de vagas na garagem: %d\n", aCadastro[i].apartamento.vagas_garag);
 	            printf("Valor do condomínio: %.2lf\n", aCadastro[i].apartamento.valor_cond);
+	            printf("........................................................\n");
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"TERRENO") == 0){
 	            printf("Área do terreno: %.2lf\n", aCadastro[i].terreno.area);
+	            printf("........................................................\n");
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"FLAT") == 0){
 	            printf("Área: %.2lf\n", aCadastro[i].flat.area);
@@ -100,6 +107,7 @@ void show_descricao()
 	            printf("Possui lavanderia: %s\n", aCadastro[i].flat.lavanderia);
 	            printf("Valor do condomínio: %.2lf\n", aCadastro[i].flat.condominio);
 	            printf("Possui serviço de limpeza: %s\n", aCadastro[i].flat.limpeza);
+	            printf("........................................................\n");
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"STUDIO") == 0){
 	            printf("Área: %.2lf\n", aCadastro[i].studio.area);
@@ -111,6 +119,7 @@ void show_descricao()
 	            printf("Possui piscina: %s\n", aCadastro[i].studio.piscina);
 	            printf("Possui sauna: %s\n", aCadastro[i].studio.sauna);
 	            printf("Possui sala de ginástica: %s\n", aCadastro[i].studio.ginastica);
+	            printf("........................................................\n");
 	        }
 			count++;
 		}
@@ -134,9 +143,9 @@ void AluguelBairro()
             f_counter++;
             if(f_counter == 1)
             	puts("ID's':");
-			printf("%d", aCadastro[i].ID);
+			printf("%d;", aCadastro[i].ID);
 			if(i != 99)
-				printf(", ");
+				printf(" ");
 			else
 				printf("\n");			
 			

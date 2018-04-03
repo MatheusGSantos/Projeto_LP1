@@ -34,7 +34,7 @@ int main()
                     goto Cadastro;
                 }
                 save_data_struct(file);
-                printf("Deseja cadastrar outro?\n1-Sim   2-Nao\nR: ");
+                printf("Deseja cadastrar outro?\n1-Sim\t2-Nao\nR: ");
                 scanf("%d", &op);
 
                 if(op == 1){
@@ -51,27 +51,46 @@ int main()
                     "\n7-Descrição de todos disponíveis por cidade\n0-Voltar\n\nR: ");
 
                 int op = 0;
+                scanf("%d", &op);
                 switch(op){
                     case 1:
+                        system("cls");
+                        show_all();
                         break;
                     case 2:
+                        system("cls");
+                        show_descricao();
                         break;
                     case 3:
+                        system("cls");
+                        printf("Informe o tipo a ser consultado:");
+                        consultaVendaTipo();
                         break;
                     case 4:
+                        system("cls");
+                        printf("Informe o tipo a ser consultado:");
+                        consultaAlugaTipo();
                         break;
                     case 5:
+                        system("cls");
+                        printf("Informe o bairro a ser consultado:");
+                        VendaBairro();
                         break;
                     case 6:
+                        system("cls");
+                        printf("Informe o bairro a ser consultado:");
+                        AluguelBairro()
                         break;
                     case 7:
+                        system("cls");
+                        printf("Informe a cidade a ser consultada:");
+                        DispCidade();
                         break;
                     default:
                         goto Menu;
-
                 }
 
-                printf("\n\n1-Consultar Outro   2-Menu Principal\nR: ");
+                printf("\n\n1-Consultar Novamente\t2-Menu Principal\nR: ");
                 scanf("%d", &op);
 
                 if(op == 1){
@@ -89,7 +108,7 @@ int main()
                 }else
                     Apaga_Cadastro(ID);
 
-                printf("\n\n1-Apagar outro cadastro   2-Menu Principal\nR: ");
+                printf("\n\n1-Apagar outro cadastro\t2-Menu Principal\nR: ");
                 scanf("%d", &op);
 
                 if(op == 1){
