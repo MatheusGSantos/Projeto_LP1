@@ -6,21 +6,16 @@
 
 setlocale(LC_ALL,"Portuguese");
 
-void read_data_struct(tCadastro *aCadastro, FILE *file){
-	if( !fread(aCadastro,sizeof(tCadastro),1,file) )
-		printf("Arquivo vazio, 0 itens importados\n");
-	else{
-		aCadastro++;
-		while(fread(aCadastro,sizeof(tCadastro),1,file)){
-			aCadastro++;
-		}
-	}
+void read_data_struct(FILE *file){
+	fseek(file,0, SEEK_SET);
+	fread(aCadastro,(sizeof(tCadastro)*100),1,file);
+	fseek(file,0, SEEK_SET);
 }
 
-void save_data_struct(tCadastro *aCadastro, FILE *file){
-	while( fwrite(aCadastro,1,sizeof(tCadastro),file) ){
-		aCadastro++;
-	}
+void save_data_struct(FILE *file){
+	fseek(file,0, SEEK_SET);
+	fwrite(aCadastro,1,(sizeof(tCadastro)*100),file);
+	fseek(file,0, SEEK_SET);
 }
 
 int change_index(){
