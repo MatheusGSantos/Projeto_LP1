@@ -17,7 +17,7 @@ int main(){
 
     Menu:          //menu
         system("cls");
-        printf("\t\t\t\tImobiliaria X\n\n");
+        printf("\t\t\t\tImobiliaria NewZa\n\n");
 
 
         printf("1- Cadastrar;\n2- Consultar;\n3- Apagar Processo\n0- Fechar o programa;\n\nEscolha: ");
