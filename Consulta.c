@@ -214,12 +214,12 @@ void DispCidade()
 	            printf("Posicao: %s\n", aCadastro[i].apartamento.posicao);
 	            printf("Numero de vagas na garagem: %d\n", aCadastro[i].apartamento.vagas_garag);
 	            printf("Valor do condominio: %.2lf\n", aCadastro[i].apartamento.valor_cond);
-                printf("........................................................\n");
+                    printf("........................................................\n");
 
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"TERRENO") == 0){
 	            printf("Area do terreno: %.2lf\n", aCadastro[i].terreno.area);
-                printf("........................................................\n");
+                    printf("........................................................\n");
 
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"FLAT") == 0){
@@ -230,7 +230,7 @@ void DispCidade()
 	            printf("Possui lavanderia: %s\n", aCadastro[i].flat.lavanderia);
 	            printf("Valor do condominio: %.2lf\n", aCadastro[i].flat.condominio);
 	            printf("Possui servico de limpeza: %s\n", aCadastro[i].flat.limpeza);
-                printf("........................................................\n");
+                    printf("........................................................\n");
 
 	        }
 	        else if(strcmp(aCadastro[i].tipo,"STUDIO") == 0){
@@ -243,7 +243,7 @@ void DispCidade()
 	            printf("Possui piscina: %s\n", aCadastro[i].studio.piscina);
 	            printf("Possui sauna: %s\n", aCadastro[i].studio.sauna);
 	            printf("Possui sala de ginastica: %s\n", aCadastro[i].studio.ginastica);
-                printf("........................................................\n");
+                    printf("........................................................\n");
 
 	        }
             flag = 1;
