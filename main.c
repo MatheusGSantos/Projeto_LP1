@@ -44,7 +44,7 @@ int main(){
                 system("cls");
                 printf("1-Todos os imoveis\n2-Descricao todos os imoveis\n"
                     "3-Disponiveis para venda por tipo\n4-Disponiveis para aluguel por tipo"
-                    "\n5-Disponiveis para venda por bairro\n6-Disponiveis para aluguel por tipo\n"
+                    "\n5-Disponiveis para venda por bairro\n6-Disponiveis para aluguel por bairro\n"
                     "7-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ");
 
                 int op = 0;
