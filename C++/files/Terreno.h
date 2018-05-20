@@ -6,9 +6,8 @@
 class Terreno : public Imovel
 {
 	public:
+		Terreno();
 		double area;
-		Terreno(double area);
-		~Terreno();
 };
 
 #endif

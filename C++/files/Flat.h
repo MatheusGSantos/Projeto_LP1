@@ -5,6 +5,7 @@
 
 class Flat: public Imovel{
     public:
+        Flat();
         double area;
         double valor;
         char arcond;
@@ -13,7 +14,14 @@ class Flat: public Imovel{
         char limpeza;
         char recep_24h;
 
-        Flat(double, double, char, char, char, char, char);
+        /*void setArea(double);
+        void setValor(double);
+        void setArcond(char);
+        void setInternet_tv(char);
+        void setLavanderia(char);
+        void setLimpeza(char);
+        void setRecep_24h(char);
+        */
 };
 
 #endif

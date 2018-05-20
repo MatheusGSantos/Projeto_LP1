@@ -6,6 +6,8 @@
 class Studio: public Imovel
 {
     public:
+        Studio();
+
         double area;
         double valor;
         char arcond;
@@ -17,7 +19,18 @@ class Studio: public Imovel
         char sauna;
         char ginastica;
 
-        Studio(double, double, char, char, char, char, char, char, char, char);
+        /*void setArea(double);
+        void setValor(double);
+        void setArcond(char);
+        void setInternet_tv(char);
+        void setLavanderia(char);
+        void setLimpeza(char);
+        void setRecep_24h(char);
+        void setPiscina(char);
+        void setSauna(char);
+        void setGinastica(char);
+        */
+        
 };
 
 #endif

@@ -1,11 +1,27 @@
 #include "Apartamento.h"
 #include <string>
 
-Apartamento::Apartamento(std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area) : Imovel(){
-	this->posicao = posicao;
-	this->numQuartos = numQuartos;
-	this->valorCondominio = valorCondominio;
-	this->vagasGaragem = vagasGaragem;
-	this->area = area;
-}
+Apartamento::Apartamento() : Imovel(){}
 
+/*
+void Apartamento::setPosicao(std::string posicao)
+{
+    this->posicao = posicao;
+}
+void setNumQuartos(int numQuartos)
+{
+    this->numQuartos = numQuartos;
+}
+void Apartamento::setValorCondominio(double valorCondominio)
+{
+    this->valorCondominio = valorCondominio;
+}
+void Apartamento::setVagasGaragem(int vagasGaragem)
+{
+      this->vagasGaragem = vagasGaragem;
+}
+void Apartamento::setArea(double area)
+{
+    this->area = area;
+}
+*/

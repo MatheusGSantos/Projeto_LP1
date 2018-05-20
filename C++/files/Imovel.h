@@ -7,14 +7,12 @@ using namespace std;
 
 class Imovel
 {
-    private:
-        int ID;
+    public:
         double valor;
         Endereco *endereco;
-        int tipoOferta;
+        string tipoOferta;
         string descricao;
 
-    public:
         Imovel();
         virtual ~Imovel();
 

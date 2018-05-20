@@ -1,4 +1,4 @@
-#ifndef APARTAMENTO_H
+	#ifndef APARTAMENTO_H
 #define APARTAMENTO_H
 #include <string>
 
@@ -14,6 +14,12 @@ class Apartamento : public Imovel{
 		int vagasGaragem;
 		double area;
 		
+		/*
+		void setPosicao(std::string posicao);
+		void setNumQuartos(int numQuartos);
+		void setValorCondominio(double valorCondominio);
+		void setVagasGaragem(int vagasGaragem);
+		void setArea(double area);*/
 };
 
 #endif

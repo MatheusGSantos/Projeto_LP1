@@ -6,12 +6,18 @@
 class Casa : public Imovel
 {
 	public:
-		Casa(int, int, double, double);
+		Casa();
 
 		int numPavim;
 		int numQuartos;
 		double areaTerreno;
 		double areaConstruida;
+
+		/*void setNumPavim(int);
+		void setNumQuartos(int);
+		void setAreaTerreno(double);
+		void setAreaConstruida(double);
+		*/
 };
 
 #endif

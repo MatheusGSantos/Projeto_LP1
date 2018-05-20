@@ -1,13 +1,27 @@
 #include "Flat.h"
 #include <iostream>
 
-Flat::Flat(double area, double valor, char arcond, char internet_tv, char lavanderia, char limpeza, char recep_24h):Imovel(){
-    this -> area = area;
-    this -> valor = valor;
-    this -> arcond = arcond;
-    this -> internet_tv = internet_tv;
-    this -> lavanderia = lavanderia;
-    this -> limpeza = limpeza;
-    this -> recep_24h = recep_24h;
-}
+Flat::Flat():Imovel(){}
 
+/*   
+void Casa::setArea(double area){
+	this -> area = area;
+}
+void Casa::setValor(double valor){
+    this -> valor = valor;
+}
+void Casa::setArcond(char arcond){
+	this -> arcond = arcond;
+}
+void Casa::setInternet_tv(char internet_tv){
+	this -> internet_tv = internet_tv;
+}
+void Casa::setLavanderia(char lavanderia){
+	this -> lavanderia = lavanderia;
+}
+void Casa::setLimpeza(char limpeza){
+	this -> limpeza = limpeza;
+}
+void Casa::setRecep_24h(char recep_24h){
+	this -> recep_24h = recep_24h;
+}*/
