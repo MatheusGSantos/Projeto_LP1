@@ -1,10 +1,12 @@
-#ifndef CASA_H_
-#define CASA_H_
+#ifndef CASA_H
+#define CASA_H
 
-class casa : public Imovel{
+#include "Imovel.h"
 
+class Casa : public Imovel
+{
 	public:
-		casa(int, int, double, double);
+		Casa(int, int, double, double);
 
 		int numPavim;
 		int numQuartos;
@@ -12,4 +14,4 @@ class casa : public Imovel{
 		double areaConstruida;
 };
 
-#endif /*CASA_H_*/
+#endif

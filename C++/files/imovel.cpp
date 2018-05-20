@@ -1,11 +1,10 @@
-
 #include "Imovel.h"
 
 Imovel::Imovel(){
     valor = 0.0;
     descricao = "";
     tipoOferta = 0; //0 = Aluga // 1 = Vende
-    endereco = Endereco("",0,"","","");
+	endereco = new Endereco("", 0, "", "", "");
 }
 double Imovel::getValor(){
     return valor;
@@ -15,7 +14,7 @@ int Imovel::getTipoOferta(){
 }
 
 Endereco Imovel::getEndereco(){
-    return endereco;
+    return *endereco;
 }
 std::string Imovel::getDescricao(){
     return descricao;

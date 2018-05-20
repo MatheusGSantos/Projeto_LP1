@@ -9,7 +9,7 @@ class Imovel
 {
     private:
         double valor;
-        Endereco endereco; //Fazer Classe Endereco
+        Endereco *endereco;
         int tipoOferta;
         string descricao;
 

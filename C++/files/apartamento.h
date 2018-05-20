@@ -1,11 +1,12 @@
-#ifndef APARTAMENTO_H_
-#define APARTAMENTO_H_
-
+#ifndef APARTAMENTO_H
+#define APARTAMENTO_H
 #include <string>
 
-class apartamento : public Imovel{
+#include "Imovel.h"
+
+class Apartamento : public Imovel{
 	public:
-		apartamento(std::string, int, double, int, double);
+		Apartamento(std::string, int, double, int, double);
 
 		std::string posicao;
 		int numQuartos;
@@ -15,4 +16,4 @@ class apartamento : public Imovel{
 		
 };
 
-#endif /*APARTAMENTO_H_*/
+#endif

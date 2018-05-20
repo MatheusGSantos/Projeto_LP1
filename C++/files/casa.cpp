@@ -1,7 +1,7 @@
-#include "casa.h"
+#include "Casa.h"
 #include <iostream>
 
-casa::casa(int numPavim, int numQuartos, double areaTerreno, double areaConstruida):Imovel(){
+Casa::Casa(int numPavim, int numQuartos, double areaTerreno, double areaConstruida):Imovel(){
 	this->numPavim = numPavim;
 	this->numQuartos = numQuartos;
 	this->areaTerreno = areaTerreno;

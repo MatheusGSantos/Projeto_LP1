@@ -3,13 +3,15 @@
 
 #include "Endereco.h"
 
+using namespace std;
+
 class Imovel
 {
     private:
-        string descricao;
         double valor;
-        Endereco endereco; //Fazer Classe Endereco
+        Endereco *endereco;
         int tipoOferta;
+        string descricao;
 
     public:
         Imovel();
@@ -18,5 +20,6 @@ class Imovel
         double getValor();
         int getTipoOferta();
         Endereco getEndereco();
-        std::string getDescricao();
-}
+        string getDescricao();
+};
+#endif

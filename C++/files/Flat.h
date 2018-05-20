@@ -1,7 +1,9 @@
-#ifndef FLAT_H_
-#define FLAT_H_
+#ifndef FLAT_H
+#define FLAT_H
 
-class flat: public Imovel{
+#include "Imovel.h"
+
+class Flat: public Imovel{
     public:
         double area;
         double valor;
@@ -11,7 +13,7 @@ class flat: public Imovel{
         char limpeza;
         char recep_24h;
 
-        flat(double, double, char, char, char, char, char);
+        Flat(double, double, char, char, char, char, char);
 };
 
-#endif // FLAT_H_INCLUDED
+#endif

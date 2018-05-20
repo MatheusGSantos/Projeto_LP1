@@ -1,8 +1,9 @@
-#ifndef STUDIO_H_INCLUDED
-#define STUDIO_H_INCLUDED
+#ifndef STUDIO_H
+#define STUDIO_H
 
+#include "Imovel.h"
 
-class studio: public imovel
+class Studio: public Imovel
 {
     public:
         double area;
@@ -16,9 +17,7 @@ class studio: public imovel
         char sauna;
         char ginastica;
 
-        studio(double, double, char, char, char, char, char, char, char, char);
-
-
+        Studio(double, double, char, char, char, char, char, char, char, char);
 };
 
-#endif // STUDIO_H
+#endif

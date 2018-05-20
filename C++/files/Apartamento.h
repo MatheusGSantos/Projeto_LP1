@@ -1,7 +1,7 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
-
 #include <string>
+
 #include "Imovel.h"
 
 class Apartamento : public Imovel{
@@ -16,4 +16,4 @@ class Apartamento : public Imovel{
 		
 };
 
-#endif /*APARTAMENTO_H*/
+#endif

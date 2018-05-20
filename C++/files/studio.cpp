@@ -1,6 +1,6 @@
-#include "studio.h"
+#include "Studio.h"
 
-studio::studio(double area, double valor, char arcond, char internet_tv, char lavanderia, char limpeza, char recep_24h, char piscina, char sauna, char ginastica):imovel(area, valor, arcond, internet_tv, lavanderia, limpeza, recep_24h, piscina, sauna, ginastica){
+Studio::Studio(double area, double valor, char arcond, char internet_tv, char lavanderia, char limpeza, char recep_24h, char piscina, char sauna, char ginastica):Imovel(){
 {
 
     this -> area = area;
