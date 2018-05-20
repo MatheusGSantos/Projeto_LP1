@@ -1,7 +1,7 @@
-#include "apartamento.h"
+#include "Apartamento.h"
 #include <string>
 
-apartamento::apartamento(std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area) : Imovel(){
+Apartamento::Apartamento(std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area) : Imovel(){
 	this->posicao = posicao;
 	this->numQuartos = numQuartos;
 	this->valorCondominio = valorCondominio;
