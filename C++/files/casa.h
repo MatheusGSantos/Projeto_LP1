@@ -1,7 +1,7 @@
 #ifndef CASA_H_
 #define CASA_H_
 
-class casa: public imovel{
+class casa : public Imovel{
 
 	public:
 		casa(int, int, double, double);
@@ -10,6 +10,6 @@ class casa: public imovel{
 		int numQuartos;
 		double areaTerreno;
 		double areaConstruida;
-}
+};
 
 #endif /*CASA_H_*/

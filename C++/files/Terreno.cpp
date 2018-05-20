@@ -1,6 +1,6 @@
 #include "Terreno.h"
 
-Terreno::Terreno(double area) : Imovel(area)
+Terreno::Terreno(double area) : Imovel()
 {
 	this->area = area;
 }

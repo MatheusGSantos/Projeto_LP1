@@ -17,11 +17,9 @@ class Imovel
         Imovel();
         virtual ~Imovel();
 
-        void setValor(double);
-        void setTipoOferta(int);
-
         double getValor();
         int getTipoOferta();
         Endereco getEndereco();
         string getDescricao();
-}
+};
+#endif
