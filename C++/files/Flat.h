@@ -1,5 +1,5 @@
-#ifndef FLAT_H_INCLUDED
-#define FLAT_H_INCLUDED
+#ifndef FLAT_H_
+#define FLAT_H_
 
 class flat: public Imovel{
     public:
