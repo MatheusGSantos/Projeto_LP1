@@ -1,6 +1,8 @@
 #ifndef CASA_H_
 #define CASA_H_
 
+#include "imovel.h"
+
 class casa : public Imovel{
 
 	public:

@@ -1,8 +1,9 @@
 #ifndef APARTAMENTO_H_
 #define APARTAMENTO_H_
 
-class apartamento: public imovel{
+#include <string>
 
+class apartamento : public Imovel{
 	public:
 		apartamento(std::string, int, double, int, double);
 
@@ -12,6 +13,6 @@ class apartamento: public imovel{
 		int vagasGaragem;
 		double area;
 		
-}
+};
 
 #endif /*APARTAMENTO_H_*/

@@ -1,7 +1,7 @@
 #ifndef FLAT_H_INCLUDED
 #define FLAT_H_INCLUDED
 
-class flat: public imovel{
+class flat: public Imovel{
     public:
         double area;
         double valor;

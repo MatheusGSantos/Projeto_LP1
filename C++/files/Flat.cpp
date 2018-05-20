@@ -1,7 +1,7 @@
 #include "Flat.h"
 #include <iostream>
 
-flat::flat(double area, double valor, char arcond, char internet_tv, char lavanderia, char limpeza, char recep_24h):imovel(area, valor, arcond, internet_tv, lavanderia, limpeza, recep_24h){
+flat::flat(double area, double valor, char arcond, char internet_tv, char lavanderia, char limpeza, char recep_24h):Imovel(area, valor, arcond, internet_tv, lavanderia, limpeza, recep_24h){
     this -> area = area;
     this -> valor = valor;
     this -> arcond = arcond;
