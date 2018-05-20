@@ -1,7 +1,7 @@
 #ifndef APARTAMENTO_H_
 #define APARTAMENTO_H_
 
-class casa: public imovel{
+class apartamento: public imovel{
 
 	public:
 		apartamento(std::string, int, double, int, double);
