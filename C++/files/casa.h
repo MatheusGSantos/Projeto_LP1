@@ -1,22 +1,11 @@
 #ifndef CASA_H_
 #define CASA_H_
 
-class casa: public Imovel{
+class casa: public imovel{
 
 	public:
 		casa(int, int, double, double);
 
-		void setNumPavim(int);
-		void setNumQuartos(int);
-		void setAreaTerreno(double);
-		void setAreaContruida(double);
-
-		int getNumPavim();
-		int getNumQuartos();
-		double getAreaTerreno();
-		double getAreaConstruida();
-		
-private:
 		int numPavim;
 		int numQuartos;
 		double areaTerreno;
