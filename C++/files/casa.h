@@ -1,7 +1,7 @@
 #ifndef CASA_H_
 #define CASA_H_
 
-class casa: public imovel{
+class casa: public Imovel{
 
 	public:
 		casa(int, int, double, double);
