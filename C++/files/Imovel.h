@@ -8,6 +8,7 @@ using namespace std;
 class Imovel
 {
     private:
+        int ID;
         double valor;
         Endereco *endereco;
         int tipoOferta;
