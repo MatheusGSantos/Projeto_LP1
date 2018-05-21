@@ -13,13 +13,13 @@ int main()
 
 	Menu:
 		system("cls");
-	        cout <<"\t\t\t\tImobiliaria NewZa\n\n";
+	    cout <<"\t\t\t\tImobiliaria NewZa\n\n";
 
 
-	        cout << "1- Cadastrar;\n2- Consultar;\n0- Fechar o programa;\n\nEscolha: ";
-	        cin >> op;
+	    cout << "1- Cadastrar;\n2- Consultar;\n0- Fechar o programa;\n\nEscolha: ";
+	    cin >> op;
 
-if(op == 1){
+		if(op == 1){
             system("cls");
             cout<<"\t\t\t\tCadastrar\n\n";
             Cadastro:

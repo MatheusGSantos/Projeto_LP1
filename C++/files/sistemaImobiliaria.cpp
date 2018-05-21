@@ -151,9 +151,9 @@ int sistemaImobiliaria::cadastraImovel(){
 		return 1;
 	}
 	cout <<"Informe o nome da cidade: ";
-	getline(cin, pont->endereco->cidade);
+	getline(cin, pont->endereco.cidade);
 
-	cout <<"Informe o nome do bairro: ";
+	/*cout <<"Informe o nome do bairro: ";
 	getline(cin, pont->endereco->bairro);
 
 	cout << "Informe o Logradouro: ";
@@ -177,14 +177,14 @@ int sistemaImobiliaria::cadastraImovel(){
 
 	pont->tipo = tipo;
 
-	imoveis.push_back(*pont);
+	imoveis.push_back(*pont);*/
 
 	return 0;
 }
 
 void sistemaImobiliaria::getImoveis()
 {
-    list <int> :: iterator it =  imoveis.begin();
+    /*list <int> :: iterator it =  imoveis.begin();
 
     if(imoveis.size() == 0)
         cout << "0 itens encontrados.\n";
@@ -192,12 +192,12 @@ void sistemaImobiliaria::getImoveis()
     while(it != imoveis.end()){
         cout << *it->id << " - " << *it->tipo << endl;
         it++;
-    }
+    }*/
 }
 
 void sistemaImobiliaria::getDescricaoImoveis()
 {
-     list <int> :: iterator it =  imoveis.begin();
+     /*list <int> :: iterator it =  imoveis.begin();
 
     if(imoveis.size() == 0)
         cout << "0 itens encontrados.\n";
@@ -253,12 +253,12 @@ void sistemaImobiliaria::getDescricaoImoveis()
                 cout <<"Ginastica disponivel: " << *it->ginastica << endl;
         }
         it++;
-    }
+    }*/
 }
 
 void sistemaImobiliaria::getImoveisPorTipo()
 {
-    string tipo;
+    /*string tipo;
 
     getline(cin, tipo);
 
@@ -271,12 +271,12 @@ void sistemaImobiliaria::getImoveisPorTipo()
         if(*it->tipo == tipo)
             cout << *it->id<< " - " << *it->tipoOferta << endl;
         it++;
-    }
+    }*/
 }
 
 void sistemaImobiliaria::getImoveisParaAlugarPorBairro()
 {
-    string bairro;
+    /*string bairro;
 
     getline(cin, bairro);
 
@@ -290,12 +290,12 @@ void sistemaImobiliaria::getImoveisParaAlugarPorBairro()
                 cout << *it->id << " - " << *it->tipo << endl;
         }
         it++;
-    }
+    }*/
 }
 
 void sistemaImobiliaria::getImoveisParaVenderPorBairro()
 {
-    string bairro;
+    /*string bairro;
 
     getline(cin, bairro);
 
@@ -309,12 +309,12 @@ void sistemaImobiliaria::getImoveisParaVenderPorBairro()
                 cout << *it->id << " - " << *it->tipo << endl;
         }
         it++;
-    }
+    }*/
 }
 
 void sistemaImobiliaria::getImoveisPorCidade()
 {
-    string cidade;
+    /*string cidade;
 
     getline(cin, cidade);
 
@@ -328,6 +328,6 @@ void sistemaImobiliaria::getImoveisPorCidade()
                 cout << *it->id << " - " << *it->tipo << endl;
         }
         it++;
-    }
+    }*/
 }
 

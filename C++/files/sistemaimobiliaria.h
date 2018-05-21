@@ -13,12 +13,12 @@ class sistemaImobiliaria{
 		std::list<Imovel> imoveis;
 
 		int cadastraImovel();
-		std::list<Imovel> getImoveis();
-		std::list<std::string> getDescricaoImoveis();
-		std::list<Imovel> getImoveisPorTipo();
-		std::list<Imovel> getImoveisParaAlugarPorBairro();
-		std::list<Imovel> getImoveisParaVenderPorBairro();
-		std::list<Imovel> getImoveisPorCidade();
+		void getImoveis();
+		void getDescricaoImoveis();
+		void getImoveisPorTipo();
+		void getImoveisParaAlugarPorBairro();
+		void getImoveisParaVenderPorBairro();
+		void getImoveisPorCidade();
 		int Verifica_ID(int ID, std::list <Imovel> imoveis);
 };
 
