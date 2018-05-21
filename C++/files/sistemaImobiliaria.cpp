@@ -24,7 +24,7 @@ int sistemaImobiliaria::Verifica_ID(int ID, list <Imovel> imoveis)
     return 0;
 }
 
-int sistemaImobiliaria::cadastraImovel(){
+int sistemaImobiliaria::cadastraImovel(/*Imovel *im */){
 
     int id;
 
@@ -113,6 +113,11 @@ int sistemaImobiliaria::cadastraImovel(){
 
 	}else if(tipo == "studio"){
 		Studio *pont = new Studio();
+
+		// Configurar todas as informacoes do studio
+		// Dados de endereco
+		// Valor
+		// Tipo de oferta
 
 		cout <<"Informe a area: ";
 		cin >> pont->area;
