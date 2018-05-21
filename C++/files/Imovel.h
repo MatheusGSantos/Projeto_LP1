@@ -8,6 +8,7 @@ using namespace std;
 class Imovel
 {
     public:
+        int id;
         double valor;
         Endereco *endereco;
         string tipoOferta;
@@ -17,7 +18,7 @@ class Imovel
         virtual ~Imovel();
 
         double getValor();
-        int getTipoOferta();
+        string getTipoOferta();
         Endereco getEndereco();
         string getDescricao();
 };

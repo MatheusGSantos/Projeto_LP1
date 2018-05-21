@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "sistemaimobiliaria.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -8,20 +9,21 @@ int main()
 {
 
 	int op;
+	sistemaImobiliaria si;
 
 	Menu:
 		system("cls");
 	        cout <<"\t\t\t\tImobiliaria NewZa\n\n";
 
 
-	        cout << "1- Cadastrar;\n2- Consultar;\n3- Apagar Processo\n0- Fechar o programa;\n\nEscolha: ";
+	        cout << "1- Cadastrar;\n2- Consultar;\n0- Fechar o programa;\n\nEscolha: ";
 	        cin >> op;
 
 if(op == 1){
             system("cls");
             cout<<"\t\t\t\tCadastrar\n\n";
             Cadastro:
-                if(Cadastro() ){
+                if(si.cadastraImovel()){
                     goto Cadastro;
                 }
                 //save_data_struct(file);
@@ -37,46 +39,41 @@ if(op == 1){
             Consulta:
                 system("cls");
                 cout << "1-Todos os imoveis\n2-Descricao todos os imoveis\n"
-                    "3-Disponiveis para venda por tipo\n4-Disponiveis para aluguel por tipo"
-                    "\n5-Disponiveis para venda por bairro\n6-Disponiveis para aluguel por bairro\n"
-                    "7-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ";
+                    "3-Disponiveis por tipo\n4-Disponiveis para venda por bairro\n5-Disponiveis para aluguel por bairro\n"
+                    "6-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ";
 
                 int op = 0;
                 cin >> op;
-                getchar();
+                cin.ignore();
+
                 switch(op){
                     case 1:
                         system("cls");
-                        //show_all();
+                        si.getImoveis();
                         break;
                     case 2:
                         system("cls");
-                        //show_descricao();
+                        si.getDescricaoImoveis();
                         break;
                     case 3:
                         system("cls");
                         cout <<"Informe o tipo a ser consultado:";
-                        // consultaVendaTipo();
+                        si.getImoveisPorTipo();
                         break;
                     case 4:
                         system("cls");
-                        cout << "Informe o tipo a ser consultado:";
-                        //consultaAlugaTipo();
+                        cout <<"Informe o bairro a ser consultado:";
+                        si.getImoveisParaVenderPorBairro();
                         break;
                     case 5:
                         system("cls");
                         cout <<"Informe o bairro a ser consultado:";
-                        VendaBairro();
+                        si.getImoveisParaAlugarPorBairro();
                         break;
                     case 6:
                         system("cls");
-                        cout <<"Informe o bairro a ser consultado:";
-                        AluguelBairro();
-                        break;
-                    case 7:
-                        system("cls");
                         cout <<"Informe a cidade a ser consultada:";
-                        DispCidade();
+                        si.getImoveisPorCidade();
                         break;
                     default:
                         goto Menu;
@@ -90,24 +87,7 @@ if(op == 1){
                 }else{
                     goto Menu;
                 }
-        }else if(op == 3){
-            Apagar:
-                cout <<"Informe o ID a do processo(0 para cancelar): ";
-                cin >> ID;
-                if(ID == 0){
-                    goto Menu;
-                }else
-                    Apaga_Cadastro(ID);
-                    save_data_struct(file);
-
-                cout <<"\n\n1-Apagar outro cadastro\t2-Menu Principal\nR: ";
-                cin >> op;
-
-                if(op == 1){
-                    goto Apagar;
-                }else{
-                    goto Menu;
-                }
+        }
 
         //Fechar arquivo...
 

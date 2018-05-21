@@ -5,6 +5,7 @@ Imovel::Imovel(){
     descricao = "";
     tipoOferta = "";
 	endereco = new Endereco("", 0, "", "", "");
+	id = 0;
 }
 double Imovel::getValor(){
     return valor;
