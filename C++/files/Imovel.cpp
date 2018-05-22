@@ -2,23 +2,10 @@
 
 Imovel::Imovel(){
     valor = 0.0;
-    descricao = "";
+    tipoImovel = "";
     tipoOferta = "";
 	endereco = new Endereco("", 0, "", "", "");
 	id = 0;
-}
-double Imovel::getValor(){
-    return valor;
-}
-std::string Imovel::getTipoOferta(){
-    return tipoOferta;
-}
-
-Endereco Imovel::getEndereco(){
-    return *endereco;
-}
-std::string Imovel::getDescricao(){
-    return descricao;
 }
 
 

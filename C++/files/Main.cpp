@@ -5,6 +5,8 @@
 
 using namespace std;
 
+void cadastro_generico(Imovel *im, int ID, string ti);
+
 int main()
 {
 
@@ -22,10 +24,169 @@ int main()
 		if(op == 1){
             system("cls");
             cout<<"\t\t\t\tCadastrar\n\n";
-            Cadastro:
-                if(si.cadastraImovel()){
-                    goto Cadastro;
-                }
+            
+			Cadastro:
+				int id;
+				string tipo;
+				
+				//Informar ID
+				cout << "Informe o ID da transacao: ";
+				cin >> id;
+				cin.ignore();
+				
+				//Informar tipo
+				cout << "Informe o tipo do imovel: ";
+				getline(cin, tipo);
+
+				//Cadastro por tipo
+				if (tipo == "casa") {
+					Casa *pont = new Casa();
+
+					cout << "Informe o numero de pavimentos: ";
+					cin >> pont->numPavim;
+					cin.ignore();
+
+					cout << "Informe o numero de quartos: ";
+					cin >> pont->numQuartos;
+					cin.ignore();
+
+					cout << "Informe a area do terreno: ";
+					cin >> pont->areaTerreno;
+					cin.ignore();
+
+					cout << "Informe a area construida: ";
+					cin >> pont->areaConstruida;
+					cin.ignore();
+
+					//finalizar cadastro
+					cadastro_generico(pont, id, tipo);
+					si.cadastraImovel(pont);
+				}
+				else if (tipo == "apartamento") {
+					Apartamento *pont = new Apartamento();
+
+					cout << "Informe a area do apartamento: ";
+					cin >> pont->area;
+					cin.ignore();
+
+					cout << "Informe o numero de quartos: ";
+					cin >> pont->numQuartos;
+					cin.ignore();
+
+					cout << "Informe a posicao: ";
+					getline(cin, pont->posicao);
+
+					cout << "Informe o valor do condominio: ";
+					cin >> pont->valorCondominio;
+					cin.ignore();
+
+					cout << "Informe o numero de vagas na garagem: ";
+					cin >> pont->vagasGaragem;
+					cin.ignore();
+
+					//finalizar cadastro
+					cadastro_generico(pont, id, tipo);
+					si.cadastraImovel(pont);
+				}
+				else if (tipo == "terreno") {
+					Terreno *pont = new Terreno();
+
+					cout << "Informe a area do terreno: ";
+					cin >> pont->area;
+					cin.ignore();
+
+					//finalizar cadastro
+					cadastro_generico(pont, id, tipo);
+					si.cadastraImovel(pont);
+				}
+				else if (tipo == "flat") {
+					Flat *pont = new Flat();
+
+					cout << "Informe a area: ";
+					cin >> pont->area;
+					cin.ignore();
+
+					cout << "Informe o valor do condominio: ";
+					cin >> pont->valor;
+					cin.ignore();
+
+					cout << "Dispoe de ar-condicionado? (s - sim, n - nao)";
+					cin >> pont->arcond;
+					cin.ignore();
+
+					cout << "Dispoe de internet e TV a cabo? (s - sim, n - nao)";
+					cin >> pont->internet_tv;
+					cin.ignore();
+
+					cout << "Dispoe de lavanderia? (s - sim, n - nao)";
+					cin >> pont->lavanderia;
+					cin.ignore();
+
+					cout << "Dispoe de arrumacao/limpeza? (s - sim, n - nao)";
+					cin >> pont->limpeza;
+					cin.ignore();
+
+					cout << "Dispoe de recepcao 24h? (s - sim, n - nao)";
+					cin >> pont->recep_24h;
+					cin.ignore();
+
+					//finalizar cadastro
+					cadastro_generico(pont, id, tipo);
+					si.cadastraImovel(pont);
+				}
+				else if (tipo == "studio") {
+					Studio *pont = new Studio();
+
+					cout << "Informe a area: ";
+					cin >> pont->area;
+					cin.ignore();
+
+					cout << "Informe o valor do condominio: ";
+					cin >> pont->valor;
+					cin.ignore();
+
+					cout << "Dispoe de ar-condicionado? (s - sim, n - nao)";
+					cin >> pont->arcond;
+					cin.ignore();
+
+					cout << "Dispoe de internet e TV a cabo? (s - sim, n - nao)";
+					cin >> pont->internet_tv;
+					cin.ignore();
+
+					cout << "Dispoe de lavanderia? (s - sim, n - nao)";
+					cin >> pont->lavanderia;
+					cin.ignore();
+
+					cout << "Dispoe de arrumacao/limpeza? (s - sim, n - nao)";
+					cin >> pont->limpeza;
+					cin.ignore();
+
+					cout << "Dispoe de recepcao 24h? (s - sim, n - nao)";
+					cin >> pont->recep_24h;
+					cin.ignore();
+
+					cout << "Dispoe de piscina? (s - sim, n - nao)";
+					cin >> pont->piscina;
+					cin.ignore();
+
+					cout << "Dispoe de sauna? (s - sim, n - nao)";
+					cin >> pont->sauna;
+					cin.ignore();
+
+					cout << "Dispoe de ginastica? (s - sim, n - nao)";
+					cin >> pont->ginastica;
+					cin.ignore();
+					
+					//finalizar cadastro
+					cadastro_generico(pont, id, tipo);
+					si.cadastraImovel(pont);
+				}
+				else {
+					cout << "Tipo invalido. Tente novamente\n";
+					Sleep(2000);
+					goto Cadastro;
+				}
+
                 //save_data_struct(file);
                 cout << "Deseja cadastrar outro?\n1-Sim\t2-Nao\nR: ";
                 cin >> op;
@@ -92,5 +253,36 @@ int main()
         //Fechar arquivo...
 
     return 0;
+}
+
+
+
+void cadastro_generico(Imovel *im, int ID, string ti)
+{
+	cout << "Informe o nome da cidade: ";
+	getline(cin, im->endereco->cidade);
+
+	cout << "Informe o nome do bairro: ";
+	getline(cin, im->endereco->bairro);
+
+	cout << "Informe o Logradouro: ";
+	getline(cin, im->endereco->logradouro);
+
+	cout << "Informe o CEP: ";
+	getline(cin, im->endereco->cep);
+
+	cout << "Informe o numero do imovel: ";
+	cin >> im->endereco->numero;
+	cin.ignore();
+
+	cout << "Informe se ele esta disponivel para aluguel ou venda: ";
+	getline(cin, im->tipoOferta);
+
+	cout << "Informe o valor do imovel: ";
+	cin >> im->valor;
+	cin.ignore();
+
+	im->id = ID;
+	im->tipoImovel = ti;
 }
 

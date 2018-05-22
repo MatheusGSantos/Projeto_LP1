@@ -8,18 +8,21 @@
 #include "Studio.h"
 #include "Terreno.h"
 
+#define MAX_CAPACITY 100
+
 class sistemaImobiliaria{
 	public:
-		std::list<Imovel> imoveis;
+		Imovel *imoveis[MAX_CAPACITY];
+		int count;
 
-		int cadastraImovel();
+		sistemaImobiliaria();
+		int cadastraImovel(Imovel *imoveis);
 		void getImoveis();
 		void getDescricaoImoveis();
 		void getImoveisPorTipo();
 		void getImoveisParaAlugarPorBairro();
 		void getImoveisParaVenderPorBairro();
 		void getImoveisPorCidade();
-		int Verifica_ID(int ID, std::list <Imovel> imoveis);
 };
 
 

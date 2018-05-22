@@ -12,14 +12,9 @@ class Imovel
         double valor;
         Endereco *endereco;
         string tipoOferta;
-        string descricao;
+        string tipoImovel;
 
         Imovel();
         virtual ~Imovel();
-
-        double getValor();
-        string getTipoOferta();
-        Endereco getEndereco();
-        string getDescricao();
 };
 #endif
