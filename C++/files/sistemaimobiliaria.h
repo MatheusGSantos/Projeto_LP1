@@ -16,7 +16,7 @@ class sistemaImobiliaria{
 		int count;
 
 		sistemaImobiliaria();
-		int cadastraImovel(Imovel *imoveis);
+		void cadastraImovel(Imovel *imoveis);
 		void getImoveis();
 		void getDescricaoImoveis();
 		void getImoveisPorTipo();

@@ -13,12 +13,10 @@ sistemaImobiliaria::sistemaImobiliaria()
 	count = 0;
 }
 
-int sistemaImobiliaria::cadastraImovel(Imovel *im){
+void sistemaImobiliaria::cadastraImovel(Imovel *im){
 	delete imoveis[count];
 	imoveis[count] = im;
 	count++;
-
-	return 0;
 }
 
 void sistemaImobiliaria::getImoveis()

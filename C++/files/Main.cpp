@@ -110,23 +110,23 @@ int main()
 					cin >> pont->valor;
 					cin.ignore();
 
-					cout << "Dispoe de ar-condicionado? (s - sim, n - nao)";
+					cout << "Dispoe de ar-condicionado? (s - sim, n - nao) ";
 					cin >> pont->arcond;
 					cin.ignore();
 
-					cout << "Dispoe de internet e TV a cabo? (s - sim, n - nao)";
+					cout << "Dispoe de internet e TV a cabo? (s - sim, n - nao) ";
 					cin >> pont->internet_tv;
 					cin.ignore();
 
-					cout << "Dispoe de lavanderia? (s - sim, n - nao)";
+					cout << "Dispoe de lavanderia? (s - sim, n - nao) ";
 					cin >> pont->lavanderia;
 					cin.ignore();
 
-					cout << "Dispoe de arrumacao/limpeza? (s - sim, n - nao)";
+					cout << "Dispoe de arrumacao/limpeza? (s - sim, n - nao) ";
 					cin >> pont->limpeza;
 					cin.ignore();
 
-					cout << "Dispoe de recepcao 24h? (s - sim, n - nao)";
+					cout << "Dispoe de recepcao 24h? (s - sim, n - nao) ";
 					cin >> pont->recep_24h;
 					cin.ignore();
 
@@ -145,35 +145,35 @@ int main()
 					cin >> pont->valor;
 					cin.ignore();
 
-					cout << "Dispoe de ar-condicionado? (s - sim, n - nao)";
+					cout << "Dispoe de ar-condicionado? (s - sim, n - nao) ";
 					cin >> pont->arcond;
 					cin.ignore();
 
-					cout << "Dispoe de internet e TV a cabo? (s - sim, n - nao)";
+					cout << "Dispoe de internet e TV a cabo? (s - sim, n - nao) ";
 					cin >> pont->internet_tv;
 					cin.ignore();
 
-					cout << "Dispoe de lavanderia? (s - sim, n - nao)";
+					cout << "Dispoe de lavanderia? (s - sim, n - nao) ";
 					cin >> pont->lavanderia;
 					cin.ignore();
 
-					cout << "Dispoe de arrumacao/limpeza? (s - sim, n - nao)";
+					cout << "Dispoe de arrumacao/limpeza? (s - sim, n - nao) ";
 					cin >> pont->limpeza;
 					cin.ignore();
 
-					cout << "Dispoe de recepcao 24h? (s - sim, n - nao)";
+					cout << "Dispoe de recepcao 24h? (s - sim, n - nao) ";
 					cin >> pont->recep_24h;
 					cin.ignore();
 
-					cout << "Dispoe de piscina? (s - sim, n - nao)";
+					cout << "Dispoe de piscina? (s - sim, n - nao) ";
 					cin >> pont->piscina;
 					cin.ignore();
 
-					cout << "Dispoe de sauna? (s - sim, n - nao)";
+					cout << "Dispoe de sauna? (s - sim, n - nao) ";
 					cin >> pont->sauna;
 					cin.ignore();
 
-					cout << "Dispoe de ginastica? (s - sim, n - nao)";
+					cout << "Dispoe de ginastica? (s - sim, n - nao) ";
 					cin >> pont->ginastica;
 					cin.ignore();
 					
@@ -192,7 +192,8 @@ int main()
                 cin >> op;
 
                 if(op == 1){
-                    goto Cadastro;
+					system("cls");
+					goto Cadastro;
                 }else{
                     goto Menu;
                 }
