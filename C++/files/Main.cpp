@@ -131,7 +131,6 @@ int main()
 					cin >> pont->recep_24h;
 					cin.ignore();
 
-					//finalizar cadastro
 					cadastro_generico(pont, id, tipo);
 					si.cadastraImovel(pont);
 				}
@@ -178,7 +177,6 @@ int main()
 					cin >> pont->ginastica;
 					cin.ignore();
 
-					//finalizar cadastro
 					cadastro_generico(pont, id, tipo);
 					si.cadastraImovel(pont);
 				}
@@ -188,7 +186,6 @@ int main()
 					goto Cadastro;
 				}
 
-                //save_data_struct(file);
                 cout << "Deseja cadastrar outro?\n1-Sim\t2-Nao\nR: ";
                 cin >> op;
 
@@ -252,8 +249,6 @@ int main()
                     goto Menu;
                 }
         }
-
-        //Fechar arquivo...
 
     return 0;
 }
