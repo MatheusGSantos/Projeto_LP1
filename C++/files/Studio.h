@@ -19,17 +19,7 @@ class Studio: public Imovel
         char sauna;
         char ginastica;
 
-        /*void setArea(double);
-        void setValor(double);
-        void setArcond(char);
-        void setInternet_tv(char);
-        void setLavanderia(char);
-        void setLimpeza(char);
-        void setRecep_24h(char);
-        void setPiscina(char);
-        void setSauna(char);
-        void setGinastica(char);
-        */
+		void getDescricao();
         
 };
 

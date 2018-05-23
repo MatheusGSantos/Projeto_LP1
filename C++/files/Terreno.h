@@ -8,6 +8,8 @@ class Terreno : public Imovel
 	public:
 		Terreno();
 		double area;
+
+		void getDescricao();
 };
 
 #endif

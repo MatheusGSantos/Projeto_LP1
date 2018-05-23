@@ -16,5 +16,6 @@ class Imovel
 
         Imovel();
         virtual ~Imovel();
+		virtual void getDescricao();
 };
 #endif

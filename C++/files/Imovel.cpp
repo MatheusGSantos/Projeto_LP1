@@ -11,5 +11,9 @@ Imovel::Imovel(){
 
 Imovel::~Imovel()
 {
-    //dtor
+}
+
+void Imovel::getDescricao()
+{
+	//getDescricao base
 }

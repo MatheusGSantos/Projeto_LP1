@@ -14,14 +14,7 @@ class Flat: public Imovel{
         char limpeza;
         char recep_24h;
 
-        /*void setArea(double);
-        void setValor(double);
-        void setArcond(char);
-        void setInternet_tv(char);
-        void setLavanderia(char);
-        void setLimpeza(char);
-        void setRecep_24h(char);
-        */
+		void getDescricao();
 };
 
 #endif

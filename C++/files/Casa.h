@@ -13,11 +13,7 @@ class Casa : public Imovel
 		double areaTerreno;
 		double areaConstruida;
 
-		/*void setNumPavim(int);
-		void setNumQuartos(int);
-		void setAreaTerreno(double);
-		void setAreaConstruida(double);
-		*/
+		void getDescricao();
 };
 
 #endif

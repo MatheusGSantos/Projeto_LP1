@@ -14,12 +14,7 @@ class Apartamento : public Imovel{
 		int vagasGaragem;
 		double area;
 
-		/*
-		void setPosicao(std::string posicao);
-		void setNumQuartos(int numQuartos);
-		void setValorCondominio(double valorCondominio);
-		void setVagasGaragem(int vagasGaragem);
-		void setArea(double area);*/
+		void getDescricao();
 };
 
 #endif

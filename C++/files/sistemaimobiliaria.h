@@ -1,6 +1,5 @@
 #ifndef SISTEMAIMOBILIARIA_H_
 #define SISTEMAIMOBILIARIA_H_
-#include <list>
 #include "Imovel.h"
 #include "Casa.h"
 #include "Apartamento.h"

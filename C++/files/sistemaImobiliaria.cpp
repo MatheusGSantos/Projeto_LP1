@@ -34,136 +34,117 @@ void sistemaImobiliaria::getImoveis()
 
 void sistemaImobiliaria::getDescricaoImoveis()
 {
-     /*list <int> :: iterator it =  imoveis.begin();
-
-    if(imoveis.size() == 0)
-        cout << "0 itens encontrados.\n";
-
-    while(it != imoveis.end()){
-        cout << "ID - " << *it->id << endl;
-        cout << *it->tipo << endl;
-
-        cout << "Cidade: " << *it.endereco->cidade << endl;
-        cout << "Bairro: " << *it.endereco->bairro << endl;
-        cout << "Logradouro: " << *it.endereco->logradouro << endl;
-        cout << "CEP: " << *it.endereco->cep << endl;
-        cout << "Numero: " << *it.endereco->numero << endl;
-
-        cout << "Disponibilidade: " << *it -> tipoOferta << endl;
-        cout << "Valor: R$" << *it -> valor << ",00" << endl;
-
-        if(*it->tipo == "casa"){
-            cout <<"Numero de pavimentos: " << *it->numPavim << endl;
-            cout <<"Numero de quartos: "  << *it->numQuartos << endl;
-            cout <<"Area do terreno: " << *it->areaTerreno << endl;
-            cout <<"Informe a area construida: " << *it->areaConstruida << endl;
-
-        } else if(*it->tipo == "apartamento"){
-                cout <<"Area do apartamento: " << *it->area << endl;
-                cout <<"Numero de quartos: "<< *it->numQuartos << endl;
-                cout <<"Posicao: "<< *it->posicao << endl;
-                cout <<"Valor do condominio: "<< *it->valorCondominio << endl;
-                cout <<"Numero de vagas na garagem: "<< *it->vagasGaragem << endl;
-
-        }else if(*it->tipo == "terreno"){
-                cout <<"Area do terreno: "<< *it->area << endl;
-
-        }else if(*it->tipo == "flat"){
-                cout <<"Area: "<< *it->area << endl;
-                cout <<"Valor do condominio: "<< *it->valor << endl;
-                cout <<"Ar-condicionado disponivel: "<< *it->arcond << endl;
-                cout <<"Internet e TV a cabo disponiveis: "<< *it->internet_tv << endl;
-                cout <<"Lavanderia disponivel: "<< *it->lavanderia << endl;
-                cout <<"Arrumacao/limpeza disponivel: "<< *it->limpeza << endl;
-                cout <<"Recepcao 24h disponivel: "<< *it->recep_24h << endl;
-
-        }else if(*it->tipo == "studio"){
-                cout <<"Area: "<< *it->area << endl;
-                cout <<"Valor do condominio: "<< *it->valor << endl;
-                cout <<"Ar-condicionado disponivel: "<< *it->arcond << endl;
-                cout <<"Internet e TV a cabo disponiveis: "<< *it->internet_tv << endl;
-                cout <<"Lavanderia disponivel: "<< *it->lavanderia << endl;
-                cout <<"Arrumacao/limpeza disponivel: "<< *it->limpeza << endl;
-                cout <<"Recepcao 24h disponivel: "<< *it->recep_24h << endl;
-                cout <<"Piscina disponivel: " << *it->piscina<< endl;
-                cout <<"Sauna disponivel: " << *it->sauna << endl;
-                cout <<"Ginastica disponivel: " << *it->ginastica << endl;
-        }
-        it++;
-    }*/
+	bool flag = true;
+	for (int i = 0; i < MAX_CAPACITY; i++) {
+		if (imoveis[i]->id != 0) {
+			imoveis[i]->getDescricao();
+			flag = false;
+		}
+    }
+	if(flag)
+		cout << "0 itens encontrados.\n";
 }
 
 void sistemaImobiliaria::getImoveisPorTipo()
 {
-    /*string tipo;
+	int num;
 
-    getline(cin, tipo);
+	cout << "Escolha um tipo de imovel para consultar: " << endl;
+	cout << "1-Casa   2-Apartamento   3-Flat   4-Studio   5-Terreno\n";
+	cout << "Resposta - ";
+	cin >> num;
 
-     list <int> :: iterator it =  imoveis.begin();
+	string str;
 
-    if(imoveis.size() == 0)
-        cout << "0 itens encontrados.\n";
+	switch (num) {
+	case 1:
+		str = "casa";
+		break;
+	case 2:
+		str = "apartamento";
+		break;
+	case 3:
+		str = "flat";
+		break;
+	case 4:
+		str = "studio";
+		break;
+	case 5:
+		str = "terreno";
+		break;
+	default:
+		cout << "Numero indisponivel!\n";
+	}
+	cout << "ID's - Oferta:" << endl;
 
-    while(it != imoveis.end()){
-        if(*it->tipo == tipo)
-            cout << *it->id<< " - " << *it->tipoOferta << endl;
-        it++;
-    }*/
+	for (Imovel *i : imoveis) {
+		if ((i->tipoImovel == str) && i->id != 0) {
+			cout << i->id << " - " << i->tipoOferta << endl;
+		}
+	}
 }
+
+
 
 void sistemaImobiliaria::getImoveisParaAlugarPorBairro()
 {
-    /*string bairro;
+	string bairro;
+	bool flag = 1;
 
-    getline(cin, bairro);
+	int i;
 
-    list <int> :: iterator it =  imoveis.begin();
+	getline(cin, bairro);
 
-    if(imoveis.size() == 0)
-        cout << "0 itens encontrados.\n";
-
-    while(it != imoveis.end()){
-        if(*it->bairro == bairro && *it->tipoOferta == "aluguel"){
-                cout << *it->id << " - " << *it->tipo << endl;
-        }
-        it++;
-    }*/
+	for (i = 0; i < MAX_CAPACITY; i++)
+	{
+		if (imoveis[i]->tipoOferta == "aluguel" && imoveis[i]->endereco->bairro == bairro)
+		{
+			cout << "ID - " << imoveis[i]->id << endl;
+			flag = 0;
+		}
+	}
+	if (flag)
+		cout << "0 itens encontrados." << endl;
 }
 
 void sistemaImobiliaria::getImoveisParaVenderPorBairro()
 {
-    /*string bairro;
+	string bairro;
+	bool flag = 1;
 
-    getline(cin, bairro);
+	int i;
 
-    list <int> :: iterator it =  imoveis.begin();
+	getline(cin, bairro);
 
-    if(imoveis.size() == 0)
-        cout << "0 itens encontrados.\n";
-
-    while(it != imoveis.end()){
-        if(*it->bairro == bairro && *it->tipoOferta == "venda"){
-                cout << *it->id << " - " << *it->tipo << endl;
-        }
-        it++;
-    }*/
+	for (i = 0; i < MAX_CAPACITY; i++)
+	{
+		if (imoveis[i]->tipoOferta == "venda" && imoveis[i]->endereco->bairro == bairro)
+		{
+			cout << "ID - " << imoveis[i]->id << endl;
+			flag = 0;
+		}
+	}
+	if (flag)
+		cout << "0 itens encontrados." << endl;
 }
 
 void sistemaImobiliaria::getImoveisPorCidade()
 {
-    /*string cidade;
+	string cidade;
+	bool flag = 1;
 
-    getline(cin, cidade);
+	int i;
 
-    list <int> :: iterator it =  imoveis.begin();
+	getline(cin, cidade);
 
-    if(imoveis.size() == 0)
-        cout << "0 itens encontrados.\n";
-
-    while(it != imoveis.end()){
-        if(*it->cidade == cidade){
-                cout << *it->id << " - " << *it->tipo << endl;
-        }
-        it++;
-    }*/
+	for (i = 0; i < MAX_CAPACITY; i++)
+	{
+		if (imoveis[i]->endereco->cidade == cidade)
+		{
+			cout << "ID - " << imoveis[i]->id << " - " << imoveis[i]->tipoOferta << endl;
+			flag = 0;
+		}
+	}
+	if (flag)
+		cout << "0 itens encontrados." << endl;
 }
