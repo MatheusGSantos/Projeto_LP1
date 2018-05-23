@@ -21,15 +21,15 @@ void sistemaImobiliaria::cadastraImovel(Imovel *im){
 
 void sistemaImobiliaria::getImoveis()
 {
-	count = 0;
-	for (Imovel *i : imoveis) {
-		if (i->id != 0) {
-			cout << i->id << " - " << i->tipoImovel << endl;
-			count++;
-		}
-	}
-	if (!count)
-		cout<<"0 itens encontrados.\n";
+    bool c = false;
+    for (int i = 0; i < MAX_CAPACITY; i++) {
+        if (imoveis [i]->id != 0) {
+            cout << imoveis[i]->id << " - " << imoveis[i]->tipoImovel << endl;
+            c = true;
+        }
+    }
+    if (!c)
+        cout<<"0 itens encontrados.\n";
 }
 
 void sistemaImobiliaria::getDescricaoImoveis()
@@ -39,6 +39,7 @@ void sistemaImobiliaria::getDescricaoImoveis()
 		if (imoveis[i]->id != 0) {
 			imoveis[i]->getDescricao();
 			flag = false;
+			cout << endl;
 		}
     }
 	if(flag)
@@ -47,12 +48,15 @@ void sistemaImobiliaria::getDescricaoImoveis()
 
 void sistemaImobiliaria::getImoveisPorTipo()
 {
-	int num;
+	int num, i;
+	bool flag = 1;
 
 	cout << "Escolha um tipo de imovel para consultar: " << endl;
 	cout << "1-Casa   2-Apartamento   3-Flat   4-Studio   5-Terreno\n";
 	cout << "Resposta - ";
+	mark:
 	cin >> num;
+	cin.ignore();
 
 	string str;
 
@@ -73,15 +77,20 @@ void sistemaImobiliaria::getImoveisPorTipo()
 		str = "terreno";
 		break;
 	default:
-		cout << "Numero indisponivel!\n";
+		cout << "Numero indisponivel! Digite outro: \n";
+		goto mark;
 	}
-	cout << "ID's - Oferta:" << endl;
 
-	for (Imovel *i : imoveis) {
-		if ((i->tipoImovel == str) && i->id != 0) {
-			cout << i->id << " - " << i->tipoOferta << endl;
+	for (i = 0; i < MAX_CAPACITY; i++)
+	{
+		if (imoveis[i]->tipoImovel == str)
+		{
+			cout << "ID-" << imoveis[i]->id << endl;
+			flag = 0;
 		}
 	}
+	if(flag)
+        cout << "0 itens encontrados." << endl;
 }
 
 
@@ -99,7 +108,7 @@ void sistemaImobiliaria::getImoveisParaAlugarPorBairro()
 	{
 		if (imoveis[i]->tipoOferta == "aluguel" && imoveis[i]->endereco->bairro == bairro)
 		{
-			cout << "ID - " << imoveis[i]->id << endl;
+			cout << "ID-" << imoveis[i]->id << endl;
 			flag = 0;
 		}
 	}
@@ -120,7 +129,7 @@ void sistemaImobiliaria::getImoveisParaVenderPorBairro()
 	{
 		if (imoveis[i]->tipoOferta == "venda" && imoveis[i]->endereco->bairro == bairro)
 		{
-			cout << "ID - " << imoveis[i]->id << endl;
+			cout << "ID-" << imoveis[i]->id << endl;
 			flag = 0;
 		}
 	}
@@ -141,7 +150,7 @@ void sistemaImobiliaria::getImoveisPorCidade()
 	{
 		if (imoveis[i]->endereco->cidade == cidade)
 		{
-			cout << "ID - " << imoveis[i]->id << " - " << imoveis[i]->tipoOferta << endl;
+			cout << "ID-" << imoveis[i]->id << ": " << imoveis[i]->tipoOferta << endl;
 			flag = 0;
 		}
 	}

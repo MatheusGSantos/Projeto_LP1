@@ -2,6 +2,7 @@
 #include <string>
 #include "sistemaimobiliaria.h"
 #include <windows.h>
+#include <fstream>
 
 using namespace std;
 
@@ -9,31 +10,31 @@ void cadastro_generico(Imovel *im, int ID, string ti);
 
 int main()
 {
+    system("color F3");
 
 	int op;
 	sistemaImobiliaria si;
 
 	Menu:
 		system("cls");
-	    cout <<"\t\t\t\tImobiliaria NewZa\n\n";
-
+	    cout <<"::::::::::::::::::Imobiliaria NewZa:::::::::::::::::\n\n";
 
 	    cout << "1- Cadastrar;\n2- Consultar;\n0- Fechar o programa;\n\nEscolha: ";
 	    cin >> op;
 
 		if(op == 1){
             system("cls");
-            cout<<"\t\t\t\tCadastrar\n\n";
-            
+            cout<<":::::::::::::::::::::Cadastrar::::::::::::::::::::::\n\n";
+
 			Cadastro:
 				int id;
 				string tipo;
-				
+
 				//Informar ID
 				cout << "Informe o ID da transacao: ";
 				cin >> id;
 				cin.ignore();
-				
+
 				//Informar tipo
 				cout << "Informe o tipo do imovel: ";
 				getline(cin, tipo);
@@ -176,7 +177,7 @@ int main()
 					cout << "Dispoe de ginastica? (s - sim, n - nao) ";
 					cin >> pont->ginastica;
 					cin.ignore();
-					
+
 					//finalizar cadastro
 					cadastro_generico(pont, id, tipo);
 					si.cadastraImovel(pont);
@@ -200,7 +201,8 @@ int main()
         }else if(op == 2){
             Consulta:
                 system("cls");
-                cout << "1-Todos os imoveis\n2-Descricao todos os imoveis\n"
+                cout << ":::::::::::::::::::::Consultar::::::::::::::::::::::\n\n"
+                    "1-Todos os imoveis\n2-Descricao todos os imoveis\n"
                     "3-Disponiveis por tipo\n4-Disponiveis para venda por bairro\n5-Disponiveis para aluguel por bairro\n"
                     "6-Descricao de todos disponiveis por cidade\n0-Voltar\n\nR: ";
 
