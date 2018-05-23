@@ -6,6 +6,7 @@
 #include "Flat.h"
 #include "Studio.h"
 #include "Terreno.h"
+#include <stdio.h>
 
 #define MAX_CAPACITY 100
 
@@ -22,6 +23,8 @@ class sistemaImobiliaria{
 		void getImoveisParaAlugarPorBairro();
 		void getImoveisParaVenderPorBairro();
 		void getImoveisPorCidade();
+		void read(FILE*arq);
+		void write(FILE*arq);
 };
 
 

@@ -157,3 +157,19 @@ void sistemaImobiliaria::getImoveisPorCidade()
 	if (flag)
 		cout << "0 itens encontrados." << endl;
 }
+
+void sistemaImobiliaria::read(FILE*arq)
+{
+    fseek(arq,0,SEEK_SET);
+    string tipo;
+    for(int i = 0;i < MAX_CAPACITY;i++)
+    {
+        if(feof(arq)){
+            break;
+        }
+        getline()
+    }
+
+
+}
+
